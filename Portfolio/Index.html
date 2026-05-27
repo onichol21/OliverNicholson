@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oliver Nicholson | Mechanical Engineering Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080b10;
+      color: #f4f4f4;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(8, 11, 16, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav .logo {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 0.95rem;
+      color: #c8c8c8;
+    }
+
+    nav ul li:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+      padding: 130px 8% 80px;
+      background:
+        radial-gradient(circle at 75% 35%, rgba(0, 153, 255, 0.25), transparent 32%),
+        radial-gradient(circle at 20% 80%, rgba(255, 122, 0, 0.12), transparent 30%),
+        #080b10;
+    }
+
+    .eyebrow {
+      color: #72c7ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      margin-bottom: 26px;
+      letter-spacing: -4px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #c7c7c7;
+      font-size: 1.14rem;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: 0.25s ease;
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: #f4f4f4;
+      color: #080b10;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.45);
+    }
+
+.hero-card {
+  border-radius: 34px;
+  overflow: hidden;
+  width: 420px;
+  aspect-ratio: 664 / 999;
+  justify-self: center;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  position: relative;
+}
+
+.hero-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 45px 100px rgba(0,0,0,0.6);
+}
+
+.hero-render {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+
+    .hero-card::after {
+  content: "NERVA-ONE • Regenerative Cooling Concept Render";
+  position: absolute;
+  bottom: 20px;
+
+  width: fit-content;
+  left: 20px;
+  right: auto;
+
+  padding: 12px 18px;
+  border-radius: 16px;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+
+  color: #f1f1f1;
+  font-size: 0.9rem;
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 18px;
+      letter-spacing: -2px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      color: #bcbcbc;
+      margin-bottom: 44px;
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 26px;
+      padding: 28px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    .card p {
+      color: #bdbdbd;
+      font-size: 0.98rem;
+    }
+
+    .project-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .project-collage {
+      display: grid;
+      grid-template-columns: 1.35fr 0.8fr 0.8fr;
+      grid-template-rows: 230px 230px;
+      gap: 18px;
+      margin-bottom: 42px;
+    }
+
+    .collage-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(135deg, #182131, #080b10);
+      min-height: 200px;
+    }
+
+    .collage-item.large {
+      grid-row: span 2;
+    }
+
+    .collage-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.95) contrast(1.05);
+      transition: 0.35s ease;
+    }
+
+    .collage-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .collage-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem;
+      color: #f1f1f1;
+    }
+
+    .collage-placeholder {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #7b8794;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .project-image {
+      height: 240px;
+      background: linear-gradient(135deg, #1b2735, #090b10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7b8794;
+      font-size: 0.92rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .project-content {
+      padding: 26px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      color: #bfe8ff;
+      border: 1px solid rgba(114,199,255,0.32);
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(114,199,255,0.08);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(255,255,255,0.16);
+      padding-left: 28px;
+    }
+
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -36px;
+      top: 7px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #72c7ff;
+    }
+
+    .project-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.18rem;
+      margin-bottom: 5px;
+    }
+
+    .timeline-item span {
+      display: block;
+      color: #72c7ff;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: #bdbdbd;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(180deg, #080b10, #111827);
+    }
+
+.article-haze {
+  margin-top: 28px;
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  opacity: 0.82;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.03);
+
+  backdrop-filter: blur(18px);
+
+  transition: 0.35s ease;
+}
+
+.article-haze:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.article-haze img {
+  width: 100%;
+  display: block;
+
+  filter: blur(1px) brightness(0.75);
+  transform: scale(1.03);
+}
+
+    .contact p {
+      color: #c7c7c7;
+      max-width: 640px;
+      margin: 0 auto 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 8%;
+      color: #777;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero,
+      .split,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        max-width: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">OLIVER NICHOLSON</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Mechanical Engineering • Propulsion • Design</div>
+      <h1>Engineering Professional Portfolio.</h1>
+      <p>
+        I am a Mechanical Engineering Honours student interested in propulsion, thermal systems,
+        additive manufacturing, CAD design, and technical visualisation. My work focuses on turning
+        complex engineering concepts into manufacturable, testable, and visually compelling systems.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="Oliver%20Nicholson%20CV.pdf" target="_blank">Download Resume</a>
+      </div>
+    </div>
+    <div class="hero-card">
+    <img class="hero-render" src="images/Hero-render.png" alt="NERVA-ONE Render">
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="split">
+      <div>
+        <h2 class="section-title">About</h2>
+        <p class="section-intro">
+          I enjoy working at the intersection of mechanical design, simulation, manufacturing, and visual communication.
+          I am especially interested in aerospace systems, propulsion development, and using computational tools to solve
+          practical engineering problems.
+        </p>
+      </div>
+      <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="card">
+          <h3>Focus</h3>
+          <p>Propulsion systems, thermal analysis, CFD, CAD design, and additive manufacturing.</p>
+        </div>
+        <div class="card">
+          <h3>Approach</h3>
+          <p>Design around real constraints: manufacturability, tolerances, testing, cost, and communication.</p>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <p>Onshape, ANSYS, Python, MATLAB, Blender, Inkscape, Excel, and technical documentation workflows.</p>
+        </div>
+        <div class="card">
+          <h3>Goal</h3>
+          <p>Contribute to space vehicle design, propulsion development, and advanced engineering systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Selected Projects</h2>
+    <p class="section-intro">
+      A visual overview of the engineering work I have developed across propulsion, CAD design, product development,
+      manufacturing, and technical visualisation.
+    </p>
+
+    <div class="grid">
+      <article class="card project-card">
+    <div class="project-image">
+  <img src="images/NERVA-ONE.png"
+       alt="NERVA-ONE Render"
+       style="width:100%; height:100%; object-fit:contain; border-radius:24px;">
+</div>
+        <div class="project-content">
+          <h3>NERVA-ONE Rocket Engine</h3>
+          <p>
+            A 1 kN ethanol-70 / nitrous oxide liquid rocket engine developed as part of undergraduate honours research,
+            featuring regenerative cooling, additive manufacturing constraints, and custom computational modelling.
+          </p>
+          <div class="tags">
+            <span class="tag">Propulsion</span>
+            <span class="tag">Python</span>
+            <span class="tag">Thermal</span>
+            <span class="tag">SLM</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card">
+          <div class="project-image">
+  <img src="images/Monorail.png"
+       alt="Monorail Render"
+       style="width:100%; height:100%; object-fit:contain; border-radius:18;">
+</div>
+        <div class="project-content">
+          <h3>Blade Runner Monorail System</h3>
+          <p>
+            A scaled monorail transit concept involving mechanical design, electronics packaging, ultrasonic sensing,
+            PCB integration, and 3D-printable structural design.
+          </p>
+          <div class="tags">
+            <span class="tag">CAD</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Electronics</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card">
+          <div class="project-image">
+    <img src="images/Bridge.png"
+        alt="Bridge"
+        style="width:100%; height:100%; object-fit:contain; border-radius:24px;">
+    </div>
+        <div class="project-content">
+          <h3>Automatic Smart Window</h3>
+          <p>
+            A CAD-designed smart window concept featuring automatic opening, integrated blinds, frame-mounted sensors,
+            and a one-way static particle filtration system for improved indoor air quality.
+          </p>
+          <div class="tags">
+            <span class="tag">Product Design</span>
+            <span class="tag">Mechanisms</span>
+            <span class="tag">Sensors</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card">
+      <div class="project-image">
+  <video autoplay muted loop playsinline>
+    <source src="images/Animation.mp4" type="video/mp4">
+  </video>
+</div>
+        <div class="project-content">
+          <h3>Technical Rendering & Visualisation</h3>
+          <p>
+            Self-taught Blender rendering and animation workflow used to communicate engineering projects through
+            realistic materials, lighting, camera movement, and presentation-ready visuals.
+          </p>
+          <div class="tags">
+            <span class="tag">Blender</span>
+            <span class="tag">Rendering</span>
+            <span class="tag">Animation</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card">
+        <div class="project-image">
+  <img src="images/Gearbox1.png" alt="Mechanical Systems Design" style="width:100%; height:100%; object-fit:cover;border-radius: 18px;">
+</div>
+        <div class="project-content">
+          <h3>Mechanical Systems Design</h3>
+          <p>
+            Coursework and independent design projects involving gearboxes, lifting systems, linkages, locking mechanisms,
+            FMEA, DFMA, and prototype-focused iteration.
+          </p>
+          <div class="tags">
+            <span class="tag">Mechanisms</span>
+            <span class="tag">DFMA</span>
+            <span class="tag">FMEA</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card">
+    <div class="project-image">
+    <img src="images/Manufacturing.png"
+        alt="Manufacturing"
+        style="width:100%; height:100%; object-fit:contain; border-radius:24px;">
+    </div>
+        <div class="project-content">
+          <h3>Manufacturing & Prototyping</h3>
+          <p>
+            Practical work involving CAD preparation, manufacturing drawings, supplier communication, machining constraints,
+            additive manufacturing limitations, and prototype iteration.
+          </p>
+          <div class="tags">
+            <span class="tag">Manufacturing</span>
+            <span class="tag">Drawings</span>
+            <span class="tag">Prototyping</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="article">
+    <h2 class="section-title">Featured Article</h2>
+    <p class="section-intro">
+      NERVA-ONE and the broader propulsion research project were featured by Macquarie University’s Lighthouse publication,
+      highlighting the motivation behind the project, the engineering challenges involved, and the goal of developing practical
+      student-led propulsion capability.
+    </p>
+
+    <div class="card" style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap:32px; align-items:center;">
+      <div>
+        <h3 style="font-size:2rem; margin-bottom:18px;">Macquarie University Lighthouse Feature</h3>
+        <p style="color:#c7c7c7; margin-bottom:20px;">
+          The article explores the development of NERVA-ONE, a regeneratively cooled liquid bipropellant rocket engine,
+          alongside the broader vision of creating hands-on aerospace engineering opportunities through undergraduate research,
+          additive manufacturing, and propulsion system development.
+        </p>
+
+        <div class="tags" style="margin-bottom:24px;">
+          <span class="tag">Propulsion</span>
+          <span class="tag">Research</span>
+          <span class="tag">Macquarie University</span>
+          <span class="tag">Aerospace</span>
+        </div>
+
+        <a class="btn primary" href="https://lighthouse.mq.edu.au/article/2026/may-2026/nerva-one-liquid-fuel-rockets" target="_blank">
+          Read Article
+        </a>
+      </div>
+
+      <div style="
+background:
+linear-gradient(rgba(8,12,20,0.68), rgba(8,12,20,0.82)),
+url('images/NERVA-JakeandI.png');
+background-size:cover;
+background-position:center;
+border-radius:26px;
+padding:40px;
+border:1px solid rgba(255,255,255,0.08);
+min-height:260px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:18px;
+"  >
+          <div style="font-size:0.85rem; letter-spacing:2px; color:#72c7ff; text-transform:uppercase;">
+  Featured By
+</div>
+
+<h3 style="font-size:2.3rem; line-height:1.05; margin:0;">
+  Lighthouse
+</h3>
+
+<p style="color:#d6d6d6; margin:0; max-width:520px; line-height:1.6;">
+  Macquarie University’s publication featuring research, innovation, and student engineering projects.
+</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-intro">
+      Technical capabilities developed through university coursework, independent projects, research, and practical design work.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Engineering Analysis</h3>
+        <p>Thermal analysis, fluid dynamics, regenerative cooling, structural calculations, pressure drop modelling, and optimisation.</p>
+      </div>
+      <div class="card">
+        <h3>Design & CAD</h3>
+        <p>Onshape, Creo, Fusion 360, assembly design, technical drawings, design for additive manufacturing, and mechanisms.</p>
+      </div>
+      <div class="card">
+        <h3>Simulation & Coding</h3>
+        <p>Python, MATLAB, ANSYS Fluent/CFX, numerical modelling, data processing, and engineering automation.</p>
+      </div>
+      <div class="card">
+        <h3>Manufacturing</h3>
+        <p>SLM design constraints, CNC machining considerations, tolerancing, prototyping, supplier communication, and post-processing.</p>
+      </div>
+      <div class="card">
+        <h3>Visual Communication</h3>
+        <p>Blender rendering, animation, technical diagrams, presentation design, and turning complex systems into clear visuals.</p>
+      </div>
+      <div class="card">
+        <h3>Professional Skills</h3>
+        <p>Technical writing, outreach, teamwork, presenting to industry, project planning, and communicating across disciplines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="split">
+      <div>
+        <h2 class="section-title">Experience & Highlights</h2>
+        <p class="section-intro">
+          A concise timeline of academic, technical, and professional development highlights. Edit dates and details as needed.
+        </p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>2025–2026</span>
+          <h3>Mechanical Engineering Honours Research</h3>
+          <p>Developing NERVA-ONE, a student-led liquid bipropellant rocket engine project focused on propulsion design, regenerative cooling, and manufacturable hardware.</p>
+        </div>
+        <div class="timeline-item">
+          <span>2025</span>
+          <h3>International Aerospace Exposure</h3>
+          <p>Attended major aerospace events and engaged with industry discussions around propulsion, launch systems, and future space technologies.</p>
+        </div>
+        <div class="timeline-item">
+          <span>2024–2025</span>
+          <h3>Multidisciplinary Engineering Projects</h3>
+          <p>Completed projects involving mechanical design, electronics integration, CFD, product design, FMEA, DFMA, and prototype development.</p>
+        </div>
+        <div class="timeline-item">
+          <span>Ongoing</span>
+          <h3>Self-Taught Rendering & Technical Visualisation</h3>
+          <p>Developed Blender-based rendering skills to create professional engineering visuals, animations, and presentation material.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>
+      I am always interested in opportunities related to propulsion, aerospace engineering, mechanical design,
+      manufacturing, and advanced engineering systems.
+    </p>
+    <div class="buttons" style="justify-content: center;">
+      <a class="btn primary" href="mailto:onichol21@gmail.com">Email Me</a>
+      <a class="btn" href="https://www.linkedin.com/in/oliver-bnicholson" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Oliver Nicholson. Built for GitHub Pages.
+  </footer>
+</body>
+</html>
