@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Oliver Nicholson | Mechanical Engineering Portfolio
-  </title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oliver Nicholson | Mechanical Engineering Portfolio</title>
+
   <style>
-   * {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -22,6 +21,63 @@
       background: #080b10;
       color: #f4f4f4;
       line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: opacity 0.12s linear;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(8, 11, 16, 0.58), rgba(8, 11, 16, 0.88)),
+        url("images/LunarSurface.png");
+      background-position: center top;
+      opacity: var(--lunar-opacity, 1);
+    }
+
+    body::after {
+      background-image:
+        linear-gradient(rgba(8, 11, 16, 0.78), rgba(8, 11, 16, 0.90)),
+        url("images/GrassForeground.png");
+      background-position: center bottom;
+      opacity: var(--grass-opacity, 0);
+    }
+
+    body > nav,
+    body > header,
+    body > section,
+    body > footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal {
+      z-index: 999;
+    }
+
+    /* HERO stays like original */
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+      padding: 130px 8% 80px;
+      background:
+        radial-gradient(circle at 75% 35%, rgba(0, 153, 255, 0.25), transparent 32%),
+        radial-gradient(circle at 20% 80%, rgba(255, 122, 0, 0.12), transparent 30%),
+        #080b10;
     }
 
     body.modal-open {
@@ -382,7 +438,7 @@
 
     .contact {
       text-align: center;
-      background: linear-gradient(180deg, #080b10, #111827);
+      background: transparent;
     }
 
     .contact p {
@@ -989,6 +1045,9 @@
   box-shadow: 0 25px 70px rgba(0,0,0,0.28);
   display: block;
 }
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: 1fr;
 
     .modal-hero-image video,
     video.modal-hero-image {
@@ -997,57 +1056,6 @@
 
     .project-popup-gallery {
       margin-top: 34px;
-    }
-
-    .transparent-intro {
-      max-width: 900px;
-      margin: 0 auto 34px;
-    }
-
-    .transparent-intro p {
-      max-width: none;
-      text-align: left;
-      margin-bottom: 14px;
-    }
-
-    .transparent-image-card {
-      width: 100%;
-      max-width: 980px;
-      margin: 0 auto 58px;
-      border-radius: 30px;
-      overflow: hidden;
-      border: 1px solid rgba(114, 199, 255, 0.16);
-      background: rgba(255, 255, 255, 0.03);
-      box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.40),
-        0 0 60px rgba(114, 199, 255, 0.06);
-    }
-
-    .transparent-banner-image {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      object-position: center 58%;
-      display: block;
-    }
-
-    .transparent-landscape-image {
-      width: 100%;
-      height: auto;
-      max-height: 390px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 28px;
-      border: 1px solid rgba(114, 199, 255, 0.16);
-      display: block;
-      align-self: center;
-    }
-
-    .manufacturing-closeup {
-      object-fit: contain !important;
-      object-position: center;
-      padding: 28px;
-      background: #0b1220;
     }
 
     /* RESPONSIVE */
@@ -1070,6 +1078,43 @@
         grid-template-columns: 1fr;
       }
 
+      .transparent-intro {
+  max-width: 900px;
+  margin: 0 auto 34px;
+}
+
+.transparent-intro p {
+  max-width: none;
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.transparent-image-card {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto 58px;
+
+  border-radius: 30px;
+  overflow: hidden;
+
+  border: 1px solid rgba(114,199,255,0.16);
+  background: rgba(255,255,255,0.03);
+
+  box-shadow:
+    0 35px 90px rgba(0,0,0,0.40),
+    0 0 60px rgba(114,199,255,0.06);
+}
+
+.transparent-banner-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  object-fit: cover;
+  object-position: center 58%;
+
+  display: block;
+}
+
       .hero-title {
         font-size: 3.2rem;
       }
@@ -1085,6 +1130,21 @@
       .modal-scroll {
         padding: 34px;
       }
+
+      .transparent-landscape-image {
+  width: 100%;
+  height: auto;
+  max-height: 390px;
+
+  object-fit: contain;
+  object-position: center;
+
+  border-radius: 28px;
+  border: 1px solid rgba(114,199,255,0.16);
+
+  display: block;
+  align-self: center;
+}
 
       .modal-hero-image {
         height: 360px;
@@ -1105,6 +1165,13 @@
       .injector-image-card {
         height: auto;
       }
+
+.manufacturing-closeup {
+  object-fit: contain !important;
+  object-position: center;
+  padding: 28px;
+  background: #0b1220;
+}
 
       .injector-image {
         height: auto;
@@ -1128,1049 +1195,661 @@
       }
     }
   </style>
- </head>
- <body>
+</head>
+
+<body>
   <nav>
-   <div class="logo">
-    OLIVER NICHOLSON
-   </div>
-   <ul>
-    <li>
-     <a href="#projects">
-      Projects
-     </a>
-    </li>
-    <li>
-     <a href="#skills">
-      Skills
-     </a>
-    </li>
-    <li>
-     <a href="#experience">
-      Experience
-     </a>
-    </li>
-    <li>
-     <a href="#contact">
-      Contact
-     </a>
-    </li>
-   </ul>
+    <div class="logo">OLIVER NICHOLSON</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
+
   <header class="hero">
-   <div>
-    <div class="eyebrow">
-     Mechanical Engineering &bull; Propulsion &bull; Design
-    </div>
-    <h1 class="hero-title">
-     <span>
-      Oliver Nicholson
-     </span>
-     <span>
-      Mechanical Engineer
-     </span>
-    </h1>
-    <p>
-     Engineering Honours student specialising in propulsion systems, thermal-fluid analysis, additive manufacturing,
+    <div>
+      <div class="eyebrow">Mechanical Engineering • Propulsion • Design</div>
+
+      <h1 class="hero-title">
+        <span>Oliver Nicholson</span>
+        <span>Mechanical Engineer</span>
+      </h1>
+
+      <p>
+        Engineering Honours student specialising in propulsion systems, thermal-fluid analysis, additive manufacturing,
         CAD design, and technical visualisation. His work focuses on transforming complex engineering concepts into
         manufacturable, testable, and visually compelling systems through analytical modelling, practical engineering
         constraints, and high-quality technical communication.
-    </p>
-    <div class="buttons">
-     <a class="btn primary" href="#projects">
-      View Projects
-     </a>
-     <a class="btn" href="Oliver%20Nicholson%20CV.pdf" target="_blank">
-      Download Resume
-     </a>
+      </p>
+
+      <div class="buttons">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="Oliver%20Nicholson%20CV.pdf" target="_blank">Download Resume</a>
+      </div>
     </div>
-   </div>
-   <div class="hero-card">
-    <img alt="Oliver Nicholson headshot" src="images/Headshot.png"/>
-   </div>
+
+    <div class="hero-card">
+      <img src="images/Headshot.png" alt="Oliver Nicholson headshot">
+    </div>
   </header>
+
   <section id="article">
-   <h2 class="section-title">
-    Featured Article
-   </h2>
-   <p class="section-intro">
-    NERVA-ONE and the broader propulsion research project were featured by Macquarie University&rsquo;s Lighthouse publication,
+    <h2 class="section-title">Featured Article</h2>
+
+    <p class="section-intro">
+      NERVA-ONE and the broader propulsion research project were featured by Macquarie University’s Lighthouse publication,
       highlighting the motivation behind the project, the engineering challenges involved, and the goal of developing practical
       student-led propulsion capability.
-   </p>
-   <div class="card article-card">
-    <div>
-     <h3 style="font-size:2rem; margin-bottom:18px;">
-      Macquarie University Lighthouse Feature
-     </h3>
-     <p style="color:#c7c7c7; margin-bottom:20px;">
-      The article explores the development of NERVA-ONE, a regeneratively cooled liquid bipropellant rocket engine,
+    </p>
+
+    <div class="card article-card">
+      <div>
+        <h3 style="font-size:2rem; margin-bottom:18px;">Macquarie University Lighthouse Feature</h3>
+
+        <p style="color:#c7c7c7; margin-bottom:20px;">
+          The article explores the development of NERVA-ONE, a regeneratively cooled liquid bipropellant rocket engine,
           alongside the broader vision of creating hands-on aerospace engineering opportunities through undergraduate research,
           additive manufacturing, and propulsion system development.
-     </p>
-     <div class="article-tags">
-      <span class="tag">
-       Propulsion
-      </span>
-      <span class="tag">
-       Research
-      </span>
-      <span class="tag">
-       Macquarie University
-      </span>
-      <span class="tag">
-       Aerospace
-      </span>
-     </div>
-     <a class="btn primary" href="https://lighthouse.mq.edu.au/article/2026/may-2026/nerva-one-liquid-fuel-rockets" target="_blank">
-      Read Article
-     </a>
+        </p>
+
+        <div class="article-tags">
+          <span class="tag">Propulsion</span>
+          <span class="tag">Research</span>
+          <span class="tag">Macquarie University</span>
+          <span class="tag">Aerospace</span>
+        </div>
+
+        <a class="btn primary" href="https://lighthouse.mq.edu.au/article/2026/may-2026/nerva-one-liquid-fuel-rockets" target="_blank">
+          Read Article
+        </a>
+      </div>
+
+      <div class="article-image-card">
+        <div style="font-size:0.85rem; letter-spacing:2px; color:#72c7ff; text-transform:uppercase;">Featured By</div>
+        <h3 style="font-size:2.3rem; line-height:1.05; margin:0;">Lighthouse</h3>
+        <p style="color:#d6d6d6; margin:0; max-width:520px; line-height:1.6;">
+          Macquarie University’s publication featuring research, innovation, and student engineering projects.
+        </p>
+      </div>
     </div>
-    <div class="article-image-card">
-     <div style="font-size:0.85rem; letter-spacing:2px; color:#72c7ff; text-transform:uppercase;">
-      Featured By
-     </div>
-     <h3 style="font-size:2.3rem; line-height:1.05; margin:0;">
-      Lighthouse
-     </h3>
-     <p style="color:#d6d6d6; margin:0; max-width:520px; line-height:1.6;">
-      Macquarie University&rsquo;s publication featuring research, innovation, and student engineering projects.
-     </p>
-    </div>
-   </div>
   </section>
+
   <section id="projects">
-   <h2 class="section-title">
-    Engineering Projects
-   </h2>
-   <p class="section-intro">
-    A visual overview of the engineering work developed across propulsion, CAD design, product development,
+    <h2 class="section-title">Engineering Projects</h2>
+
+    <p class="section-intro">
+      A visual overview of the engineering work developed across propulsion, CAD design, product development,
       manufacturing, and technical visualisation.
-   </p>
-   <div class="grid">
-    <article class="card project-card" onclick="openModal('nervaModal')">
-     <div class="project-image">
-      <img alt="NERVA-ONE render" src="images/NERVA-ONE.png"/>
-     </div>
-     <div class="project-content">
-      <h3>
-       NERVA-ONE Rocket Engine
-      </h3>
-      <p>
-       A 1 kN ethanol-70 / nitrous oxide liquid rocket engine developed as part of undergraduate honours research,
+    </p>
+
+    <div class="grid">
+      <article class="card project-card" onclick="openModal('nervaModal')">
+        <div class="project-image">
+          <img src="images/NERVA-ONE.png" alt="NERVA-ONE render">
+        </div>
+        <div class="project-content">
+          <h3>NERVA-ONE Rocket Engine</h3>
+          <p>
+            A 1 kN ethanol-70 / nitrous oxide liquid rocket engine developed as part of undergraduate honours research,
             featuring regenerative cooling, additive manufacturing constraints, and custom computational modelling.
-      </p>
-      <div class="project-tags">
-       <span class="tag">
-        Propulsion
-       </span>
-       <span class="tag">
-        Python
-       </span>
-       <span class="tag">
-        Thermal
-       </span>
-       <span class="tag">
-        SLM
-       </span>
-      </div>
-      <div class="read-more-text">
-       Click to explore project &rarr;
-      </div>
-     </div>
-    </article>
-    <article class="card project-card" onclick="openModal('gearboxModal')">
-     <div class="project-image">
-      <img alt="Planetary gearbox" src="images/Gearbox1.png"/>
-     </div>
-     <div class="project-content">
-      <h3>
-       Modular 3-Stage Planetary Gearbox
-      </h3>
-      <p>
-       Design and fabrication of a modular, three-stage planetary gearbox as part of a competitive mechanical design project
+          </p>
+          <div class="project-tags">
+            <span class="tag">Propulsion</span>
+            <span class="tag">Python</span>
+            <span class="tag">Thermal</span>
+            <span class="tag">SLM</span>
+          </div>
+          <div class="read-more-text">Click to explore project →</div>
+        </div>
+      </article>
+
+      <article class="card project-card" onclick="openModal('gearboxModal')">
+        <div class="project-image">
+          <img src="images/Gearbox1.png" alt="Planetary gearbox">
+        </div>
+        <div class="project-content">
+          <h3>Modular 3-Stage Planetary Gearbox</h3>
+          <p>
+            Design and fabrication of a modular, three-stage planetary gearbox as part of a competitive mechanical design project
             simulating lunar construction constraints.
-      </p>
-      <div class="project-tags">
-       <span class="tag">
-        Mechanisms
-       </span>
-       <span class="tag">
-        DFMA
-       </span>
-       <span class="tag">
-        FMEA
-       </span>
-      </div>
-      <div class="read-more-text">
-       Click to explore project &rarr;
-      </div>
-     </div>
-    </article>
-    <article class="card project-card" onclick="openModal('combustionModal')">
-     <div class="project-image">
-      <video autoplay="" loop="" muted="" playsinline="">
-       <source src="images/Combustion%20Chamber.mp4" type="video/mp4"/>
-      </video>
-     </div>
-     <div class="project-content">
-      <h3>
-       Transparent Combustion Chamber
-      </h3>
-      <p>
-       Oliver's beginning into propulsion; A transparent annular combustion chamber developed to investigate flame stability, airflow distribution,
+          </p>
+          <div class="project-tags">
+            <span class="tag">Mechanisms</span>
+            <span class="tag">DFMA</span>
+            <span class="tag">FMEA</span>
+          </div>
+          <div class="read-more-text">Click to explore project →</div>
+        </div>
+      </article>
+
+      <article class="card project-card" onclick="openModal('combustionModal')">
+        <div class="project-image">
+          <video autoplay muted loop playsinline>
+            <source src="images/Combustion%20Chamber.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="project-content">
+          <h3>Transparent Combustion Chamber</h3>
+          <p>
+            Oliver's beginning into propulsion; A transparent annular combustion chamber developed to investigate flame stability, airflow distribution,
             and combustion characteristics within confined flow geometries.
-      </p>
-      <div class="project-tags">
-       <span class="tag">
-        Combustion
-       </span>
-       <span class="tag">
-        Fluid Flow
-       </span>
-       <span class="tag">
-        Testing
-       </span>
-       <span class="tag">
-        CAD
-       </span>
-      </div>
-     </div>
-    </article>
-    <article class="card project-card">
-     <div class="project-image">
-      <video autoplay="" loop="" muted="" playsinline="">
-       <source src="images/Animation.mp4" type="video/mp4"/>
-      </video>
-     </div>
-     <div class="project-content">
-      <h3>
-       Technical Rendering &amp; Visualisation
-      </h3>
-      <p>
-       Blender rendering and animation workflow used to communicate engineering projects through realistic materials,
+          </p>
+          <div class="project-tags">
+            <span class="tag">Combustion</span>
+            <span class="tag">Fluid Flow</span>
+            <span class="tag">Testing</span>
+            <span class="tag">CAD</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card">
+        <div class="project-image">
+          <video autoplay muted loop playsinline>
+            <source src="images/Animation.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="project-content">
+          <h3>Technical Rendering & Visualisation</h3>
+          <p>
+            Blender rendering and animation workflow used to communicate engineering projects through realistic materials,
             lighting, camera movement, and presentation-ready visuals.
-      </p>
-      <div class="project-tags">
-       <span class="tag">
-        Blender
-       </span>
-       <span class="tag">
-        Rendering
-       </span>
-       <span class="tag">
-        Animation
-       </span>
-      </div>
-     </div>
-    </article>
-    <article class="card project-card" onclick="openModal('monorailModal')">
-     <div class="project-image">
-      <img alt="Monorail render" src="images/Monorail.png"/>
-     </div>
-     <div class="project-content">
-      <h3>
-       Collaborative University Engineering Projects
-      </h3>
-      <p>
-       Collaborative university engineering projects focused on the design, analysis, prototyping, and manufacturing of functional mechanical systems. These projects combined CAD development, mechanical design, and electronics integration, to deliver refined physical prototypes.
-      </p>
-      <div class="project-tags">
-       <span class="tag">
-        CAD
-       </span>
-       <span class="tag">
-        3D Printing
-       </span>
-       <span class="tag">
-        Electronics
-       </span>
-      </div>
-      <div class="read-more-text">
-       Click to explore project &rarr;
-      </div>
-     </div>
-    </article>
-    <article class="card project-card" onclick="openModal('manufacturingModal')">
-     <div class="project-image">
-      <img alt="Manufacturing work" src="images/Manufacturing.png"/>
-     </div>
-     <div class="project-content">
-      <h3>
-       Manufacturing &amp; Prototyping
-      </h3>
-      <p>
-       Practical work involving CAD preparation, manufacturing drawings, supplier communication, machining constraints,
+          </p>
+          <div class="project-tags">
+            <span class="tag">Blender</span>
+            <span class="tag">Rendering</span>
+            <span class="tag">Animation</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card" onclick="openModal('monorailModal')">
+        <div class="project-image">
+          <img src="images/Monorail.png" alt="Monorail render">
+        </div>
+        <div class="project-content">
+          <h3>Collaborative University Engineering Projects</h3>
+          <p>
+            Collaborative university engineering projects focused on the design, analysis, prototyping, and manufacturing of functional mechanical systems. These projects combined CAD development, mechanical design, and electronics integration, to deliver refined physical prototypes.
+
+          </p>
+          <div class="project-tags">
+            <span class="tag">CAD</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Electronics</span>
+          </div>
+          <div class="read-more-text">Click to explore project →</div>
+        </div>
+      </article>
+
+      <article class="card project-card" onclick="openModal('manufacturingModal')">
+        <div class="project-image">
+          <img src="images/Manufacturing.png" alt="Manufacturing work">
+        </div>
+        <div class="project-content">
+          <h3>Manufacturing & Prototyping</h3>
+          <p>
+            Practical work involving CAD preparation, manufacturing drawings, supplier communication, machining constraints,
             additive manufacturing limitations, and prototype iteration.
-      </p>
-      <div class="project-tags">
-       <span class="tag">
-        Manufacturing
-       </span>
-       <span class="tag">
-        Drawings
-       </span>
-       <span class="tag">
-        Prototyping
-       </span>
-      </div>
-      <div class="read-more-text">
-       Click to explore project &rarr;
-      </div>
-     </div>
-    </article>
-   </div>
+          </p>
+          <div class="project-tags">
+            <span class="tag">Manufacturing</span>
+            <span class="tag">Drawings</span>
+            <span class="tag">Prototyping</span>
+          </div>
+          <div class="read-more-text">Click to explore project →</div>
+        </div>
+      </article>
+    </div>
   </section>
+
   <section id="skills">
-   <h2 class="section-title">
-    Skills
-   </h2>
-   <p class="section-intro">
-    Technical capabilities developed through university coursework, independent projects, research, and practical design work.
-   </p>
-   <div class="grid">
-    <div class="card">
-     <h3>
-      Engineering Analysis
-     </h3>
-     <p>
-      Thermal analysis, fluid dynamics, regenerative cooling, structural calculations, pressure drop modelling, and optimisation.
-     </p>
+    <h2 class="section-title">Skills</h2>
+
+    <p class="section-intro">
+      Technical capabilities developed through university coursework, independent projects, research, and practical design work.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Engineering Analysis</h3>
+        <p>Thermal analysis, fluid dynamics, regenerative cooling, structural calculations, pressure drop modelling, and optimisation.</p>
+      </div>
+
+      <div class="card">
+        <h3>Design & CAD</h3>
+        <p>Onshape, Creo, Fusion 360, assembly design, technical drawings, design for additive manufacturing, and mechanisms.</p>
+      </div>
+
+      <div class="card">
+        <h3>Simulation & Coding</h3>
+        <p>Python, MATLAB, ANSYS Fluent/CFX, numerical modelling, data processing, and engineering automation.</p>
+      </div>
+
+      <div class="card">
+        <h3>Manufacturing</h3>
+        <p>SLM design constraints, CNC machining considerations, tolerancing, prototyping, supplier communication, and post-processing.</p>
+      </div>
+
+      <div class="card">
+        <h3>Visual Communication</h3>
+        <p>Blender rendering, animation, technical diagrams, presentation design, and turning complex systems into clear visuals.</p>
+      </div>
+
+      <div class="card">
+        <h3>Professional Skills</h3>
+        <p>Technical writing, outreach, teamwork, presenting to industry, project planning, and communicating across disciplines.</p>
+      </div>
     </div>
-    <div class="card">
-     <h3>
-      Design &amp; CAD
-     </h3>
-     <p>
-      Onshape, Creo, Fusion 360, assembly design, technical drawings, design for additive manufacturing, and mechanisms.
-     </p>
-    </div>
-    <div class="card">
-     <h3>
-      Simulation &amp; Coding
-     </h3>
-     <p>
-      Python, MATLAB, ANSYS Fluent/CFX, numerical modelling, data processing, and engineering automation.
-     </p>
-    </div>
-    <div class="card">
-     <h3>
-      Manufacturing
-     </h3>
-     <p>
-      SLM design constraints, CNC machining considerations, tolerancing, prototyping, supplier communication, and post-processing.
-     </p>
-    </div>
-    <div class="card">
-     <h3>
-      Visual Communication
-     </h3>
-     <p>
-      Blender rendering, animation, technical diagrams, presentation design, and turning complex systems into clear visuals.
-     </p>
-    </div>
-    <div class="card">
-     <h3>
-      Professional Skills
-     </h3>
-     <p>
-      Technical writing, outreach, teamwork, presenting to industry, project planning, and communicating across disciplines.
-     </p>
-    </div>
-   </div>
   </section>
+
   <section id="experience">
-   <div class="split">
-    <div>
-     <h2 class="section-title">
-      Experience &amp; Highlights
-     </h2>
+    <div class="split">
+      <div>
+        <h2 class="section-title">Experience & Highlights</h2>
+        <p class="section-intro">
+          A concise timeline of academic, technical, and professional development highlights.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>2025–2026</span>
+          <h3>Mechanical Engineering Honours Research</h3>
+          <p>Developing NERVA-ONE, a student-led liquid bipropellant rocket engine project focused on propulsion design, regenerative cooling, and manufacturable hardware.</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>2025</span>
+          <h3>International Aerospace Exposure</h3>
+          <p>Attended major aerospace events and engaged with industry discussions around propulsion, launch systems, and future space technologies.</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>2024–2025</span>
+          <h3>Multidisciplinary Engineering Projects</h3>
+          <p>Completed projects involving mechanical design, electronics integration, CFD, product design, FMEA, DFMA, and prototype development.</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>Ongoing</span>
+          <h3>Rendering & Technical Visualisation</h3>
+          <p>Developed Blender-based rendering skills to create professional engineering visuals, animations, and presentation material.</p>
+        </div>
+      </div>
     </div>
-    <div class="timeline">
-     <div class="timeline-item">
-      <span>
-       2025&ndash;2026
-      </span>
-      <h3>
-       Mechanical Engineering Honours Research
-      </h3>
-      <p>
-       Developing NERVA-ONE, a student-led liquid bipropellant rocket engine project focused on propulsion design, regenerative cooling, and manufacturable hardware.
-      </p>
-     </div>
-     <div class="timeline-item">
-      <span>
-       2025
-      </span>
-      <h3>
-       International Aerospace Exposure
-      </h3>
-      <p>
-       Attended major aerospace events and engaged with industry discussions around propulsion, launch systems, and future space technologies.
-      </p>
-     </div>
-     <div class="timeline-item">
-      <span>
-       2024&ndash;2025
-      </span>
-      <h3>
-       Multidisciplinary Engineering Projects
-      </h3>
-      <p>
-       Completed projects involving mechanical design, electronics integration, CFD, product design, FMEA, DFMA, and prototype development.
-      </p>
-     </div>
-     <div class="timeline-item">
-      <span>
-       Ongoing
-      </span>
-      <h3>
-       Rendering &amp; Technical Visualisation
-      </h3>
-      <p>
-       Developed Blender-based rendering skills to create professional engineering visuals, animations, and presentation material.
-      </p>
-     </div>
-    </div>
-   </div>
   </section>
-  <section class="contact" id="contact">
-   <h2 class="section-title">
-    Contact
-   </h2>
-   <p>
-    I am always interested in opportunities related to propulsion, aerospace engineering, mechanical design,
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>
+      I am always interested in opportunities related to propulsion, aerospace engineering, mechanical design,
       manufacturing, and advanced engineering systems.
-   </p>
-   <div class="buttons" style="justify-content: center;">
-    <a class="btn primary" href="mailto:onichol21@gmail.com">
-     Email Me
-    </a>
-    <a class="btn" href="https://www.linkedin.com/in/oliver-bnicholson" target="_blank">
-     LinkedIn
-    </a>
-   </div>
+    </p>
+    <div class="buttons" style="justify-content: center;">
+      <a class="btn primary" href="mailto:onichol21@gmail.com">Email Me</a>
+      <a class="btn" href="https://www.linkedin.com/in/oliver-bnicholson" target="_blank">LinkedIn</a>
+    </div>
   </section>
+
   <footer>
-   &copy; 2026 Oliver Nicholson. Built for GitHub Pages.
+    © 2026 Oliver Nicholson. Built for GitHub Pages.
   </footer>
+
   <!-- NERVA POPUP -->
-  <div class="modal" id="nervaModal">
-   <div class="modal-content">
-    <span class="close" onclick="closeModal('nervaModal')">
-     &times;
-    </span>
-    <div class="modal-scroll">
-     <div class="modal-header">
-      <p class="modal-eyebrow">
-       Undergraduate Honours Research &bull; Propulsion Development
-      </p>
-      <h2>
-       NERVA-ONE Rocket Engine
-      </h2>
-     </div>
-     <div class="modal-hero-grid">
-      <div>
-       <p class="modal-lead">
-        NERVA-ONE is a 1 kN regeneratively cooled ethanol-70 / nitrous oxide liquid bipropellant rocket engine developed by Oliver Nicholson and Jake Mackenzie Wood under the supervision of A/Prof Fatemeh Salehi, as part of undergraduate honours research at Macquarie University. The project brings together propulsion analysis, thermal-fluid modelling, structural design, additive manufacturing constraints, and practical engine integration into a single manufacturable propulsion system.
-       </p>
-       <p class="modal-lead">
-        The engine was developed not only as a theoretical design exercise, but as a physical research platform for future validation testing. A major focus of the work was understanding how the coupled nature of cooling channel geometry, pressure drop, wall temperature, material strength, and manufacturing limitations can be managed through a custom computational optimisation workflow.
-       </p>
-      </div>
-      <img alt="NERVA-ONE rocket engine render" class="modal-hero-image" src="images/Hero-render.png"/>
-     </div>
-     <div class="modal-section">
-      <h3>
-       Key Parameters
-      </h3>
-      <p class="section-intro-modal">
-       A technical snapshot of the operating point, propellant combination, cooling strategy, and major design features used to define the engine architecture.
-      </p>
-      <div class="modern-param-table">
-       <div class="param-col">
-        <div class="param-row">
-         <span>
-          1000
-          <small>
-           N
-          </small>
-         </span>
-         <p>
-          Targeted Design Thrust
-         </p>
+
+  <div id="nervaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('nervaModal')">&times;</span>
+
+      <div class="modal-scroll">
+        <div class="modal-header">
+          <p class="modal-eyebrow">Undergraduate Honours Research • Propulsion Development</p>
+          <h2>NERVA-ONE Rocket Engine</h2>
         </div>
-        <div class="param-row">
-         <span>
-          C₂H₅OH
-         </span>
-         <p>
-          Fuel &mdash; Ethanol-70
-         </p>
+
+        <div class="modal-hero-grid">
+          <div>
+            <p class="modal-lead">
+              NERVA-ONE is a 1 kN regeneratively cooled ethanol-70 / nitrous oxide liquid bipropellant rocket engine developed by Oliver Nicholson and Jake Mackenzie Wood under the supervision of A/Prof Fatemeh Salehi, as part of undergraduate honours research at Macquarie University. The project brings together propulsion analysis, thermal-fluid modelling, structural design, additive manufacturing constraints, and practical engine integration into a single manufacturable propulsion system.
+            </p>
+
+            <p class="modal-lead">
+              The engine was developed not only as a theoretical design exercise, but as a physical research platform for future validation testing. A major focus of the work was understanding how the coupled nature of cooling channel geometry, pressure drop, wall temperature, material strength, and manufacturing limitations can be managed through a custom computational optimisation workflow.
+            </p>
+          </div>
+
+          <img src="images/Hero-render.png" alt="NERVA-ONE rocket engine render" class="modal-hero-image">
         </div>
-        <div class="param-row">
-         <span>
-          N₂O
-         </span>
-         <p>
-          Oxidiser &mdash; Nitrous Oxide
-         </p>
+
+        <div class="modal-section">
+          <h3>Key Parameters</h3>
+          <p class="section-intro-modal">
+            A technical snapshot of the operating point, propellant combination, cooling strategy, and major design features used to define the engine architecture.
+          </p>
+
+          <div class="modern-param-table">
+            <div class="param-col">
+              <div class="param-row"><span>1000 <small>N</small></span><p>Targeted Design Thrust</p></div>
+              <div class="param-row"><span>C₂H₅OH</span><p>Fuel — Ethanol-70</p></div>
+              <div class="param-row"><span>N₂O</span><p>Oxidiser — Nitrous Oxide</p></div>
+              <div class="param-row"><span>5.17 <small>MPa</small></span><p>Propellant Feed Pressure</p></div>
+              <div class="param-row"><span>0.28 <small>MPa</small></span><p>Coolant Pressure Budget</p></div>
+              <div class="param-row"><span>3.45 <small>MPa</small></span><p>Chamber Pressure</p></div>
+              <div class="param-row"><span>225 <small>sec</small></span><p>Specific Impulse</p></div>
+              <div class="param-row"><span>3.85 <small>O/F</small></span><p>O/F Mass Ratio</p></div>
+              <div class="param-row"><span>24.7 <small>psia</small></span><p>Exit Pressure</p></div>
+              <div class="param-row"><span>2.36 <small>Mach</small></span><p>Effective Exhaust Velocity</p></div>
+              <div class="param-row"><span>1415 <small>m/s</small></span><p>Characteristic Exhaust Velocity</p></div>
+              <div class="param-row"><span>7.05</span><p>Expansion Ratio</p></div>
+            </div>
+
+            <div class="param-divider"></div>
+
+            <div class="param-col">
+              <div class="param-row"><span>Triplet</span><p>Unlike Impinging Injector</p></div>
+              <div class="param-row"><span>4.44 <small>MPa</small></span><p>Injection Pressure</p></div>
+              <div class="param-row"><span>3 <small>mm</small></span><p>Impingement Distance</p></div>
+              <div class="param-row"><span>20 <small>%</small></span><p>Injector Pressure Drop</p></div>
+              <div class="param-row"><span>0.39 <small>kg/s</small></span><p>Nitrous Mass Flow</p></div>
+              <div class="param-row"><span>1 <small>mm</small></span><p>20 · Nitrous Ports at 30°</p></div>
+              <div class="param-row"><span>0.068 <small>kg/s</small></span><p>Ethanol Mass Flow Rate</p></div>
+              <div class="param-row"><span>0.6 <small>mm</small></span><p>10 · Ethanol Orifices</p></div>
+              <div class="param-row"><span>5 <small>%</small></span><p>Film-cooling Flow Allocation</p></div>
+              <div class="param-row"><span>0.4 <small>mm</small></span><p>10 · Film Cooling Orifices</p></div>
+              <div class="param-row"><span>1.7 <small>mm</small></span><p>Gasket Thickness</p></div>
+              <div class="param-row"><span>Brass</span><p>Material Selection</p></div>
+            </div>
+          </div>
         </div>
-        <div class="param-row">
-         <span>
-          5.17
-          <small>
-           MPa
-          </small>
-         </span>
-         <p>
-          Propellant Feed Pressure
-         </p>
+
+        <div class="modal-section">
+          <h3>Thrust Chamber</h3>
+
+          <div class="thrust-layout">
+            <div>
+              <p>
+                A major focus of the research is the optimisation of regenerative cooling channel geometry throughout the thrust chamber. Initial thermal estimates are obtained using a Bartz based approximation, followed by a coolant driven search method to determine suitable channel geometries along the chamber length.
+              </p>
+
+              <p>
+                To support this process, a one-dimensional computational model has been developed which can generate regenerative cooling channel geometries parametrically while accounting for both the geometric constraints of the engine and the manufacturing limitations of Selective Laser Melting (SLM).
+              </p>
+            </div>
+
+            <img src="images/Bi-Channel.png" alt="Regenerative cooling chamber render" class="thrust-image">
+          </div>
+
+          <div class="full-width-text">
+            <p>
+              Rather than relying on manually designed cooling layouts, this tool allows rapid exploration of a much broader range of channel configurations and geometric strategies. This enables the investigation of cooling geometries that are often overlooked in student-scale propulsion projects due to design complexity and iteration time.
+            </p>
+
+            <p>
+              By integrating computational optimisation with additive manufacturing constraints, the project aims to push the design space of small regeneratively cooled engines further than is typically achievable through conventional design approaches.
+            </p>
+          </div>
         </div>
-        <div class="param-row">
-         <span>
-          0.28
-          <small>
-           MPa
-          </small>
-         </span>
-         <p>
-          Coolant Pressure Budget
-         </p>
+
+        <div class="modal-section">
+          <h3>Computational Workflow</h3>
+          <p class="section-intro-modal">
+            Simplified workflow of the custom one-dimensional optimisation model used to iteratively solve regenerative cooling geometry, pressure drop, thermal loading, and structural constraints along the engine.
+          </p>
+
+          <div class="workflow-card">
+            <img src="images/Code-Workflow.png" alt="NERVA-ONE computational workflow diagram" class="workflow-image">
+          </div>
         </div>
-        <div class="param-row">
-         <span>
-          3.45
-          <small>
-           MPa
-          </small>
-         </span>
-         <p>
-          Chamber Pressure
-         </p>
+
+        <div class="modal-section injector-section">
+          <div class="injector-layout">
+            <div class="injector-text">
+              <h3>Injector and Manifold</h3>
+              <p>
+                The injector system uses a triplet unlike-impinging injector configuration, designed to balance resultant momentum and promote efficient atomisation prior to combustion. The injector incorporates 20 nitrous oxide injection ports at 1 mm diameter, 10 ethanol injection ports at 0.6 mm diameter, and 10 film-cooling ports at 0.4 mm diameter.
+              </p>
+              <p>
+                Film cooling accounts for approximately 5% of the total system mass flow rate and provides the primary thermal protection along the chamber wall, significantly reducing local heat flux within the combustion chamber.
+              </p>
+              <p>
+                The manifold and thrust chamber are additively manufactured in AlSi10Mg using Selective Laser Melting, while the injector itself is machined from brass to achieve the required tolerances for the small injection orifices. Sealing between the injector and combustion chamber is achieved using a graphite-reinforced steel gasket to accommodate the dissimilar materials and operating pressures within the assembly.
+              </p>
+            </div>
+
+            <div class="injector-image-card">
+              <img src="images/Injector-design.png" alt="Injector and manifold assembly render" class="injector-image">
+            </div>
+          </div>
         </div>
-        <div class="param-row">
-         <span>
-          225
-          <small>
-           sec
-          </small>
-         </span>
-         <p>
-          Specific Impulse
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          3.85
-          <small>
-           O/F
-          </small>
-         </span>
-         <p>
-          O/F Mass Ratio
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          24.7
-          <small>
-           psia
-          </small>
-         </span>
-         <p>
-          Exit Pressure
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          2.36
-          <small>
-           Mach
-          </small>
-         </span>
-         <p>
-          Effective Exhaust Velocity
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          1415
-          <small>
-           m/s
-          </small>
-         </span>
-         <p>
-          Characteristic Exhaust Velocity
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          7.05
-         </span>
-         <p>
-          Expansion Ratio
-         </p>
-        </div>
-       </div>
-       <div class="param-divider">
-       </div>
-       <div class="param-col">
-        <div class="param-row">
-         <span>
-          Triplet
-         </span>
-         <p>
-          Unlike Impinging Injector
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          4.44
-          <small>
-           MPa
-          </small>
-         </span>
-         <p>
-          Injection Pressure
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          3
-          <small>
-           mm
-          </small>
-         </span>
-         <p>
-          Impingement Distance
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          20
-          <small>
-           %
-          </small>
-         </span>
-         <p>
-          Injector Pressure Drop
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          0.39
-          <small>
-           kg/s
-          </small>
-         </span>
-         <p>
-          Nitrous Mass Flow
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          1
-          <small>
-           mm
-          </small>
-         </span>
-         <p>
-          20 &middot; Nitrous Ports at 30&deg;
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          0.068
-          <small>
-           kg/s
-          </small>
-         </span>
-         <p>
-          Ethanol Mass Flow Rate
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          0.6
-          <small>
-           mm
-          </small>
-         </span>
-         <p>
-          10 &middot; Ethanol Orifices
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          5
-          <small>
-           %
-          </small>
-         </span>
-         <p>
-          Film-cooling Flow Allocation
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          0.4
-          <small>
-           mm
-          </small>
-         </span>
-         <p>
-          10 &middot; Film Cooling Orifices
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          1.7
-          <small>
-           mm
-          </small>
-         </span>
-         <p>
-          Gasket Thickness
-         </p>
-        </div>
-        <div class="param-row">
-         <span>
-          Brass
-         </span>
-         <p>
-          Material Selection
-         </p>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="modal-section">
-      <h3>
-       Thrust Chamber
-      </h3>
-      <div class="thrust-layout">
-       <div>
-        <p>
-         A major focus of the research is the optimisation of regenerative cooling channel geometry throughout the thrust chamber. Initial thermal estimates are obtained using a Bartz based approximation, followed by a coolant driven search method to determine suitable channel geometries along the chamber length.
-        </p>
-        <p>
-         To support this process, a one-dimensional computational model has been developed which can generate regenerative cooling channel geometries parametrically while accounting for both the geometric constraints of the engine and the manufacturing limitations of Selective Laser Melting (SLM).
-        </p>
-       </div>
-       <img alt="Regenerative cooling chamber render" class="thrust-image" src="images/Bi-Channel.png"/>
-      </div>
-      <div class="full-width-text">
-       <p>
-        Rather than relying on manually designed cooling layouts, this tool allows rapid exploration of a much broader range of channel configurations and geometric strategies. This enables the investigation of cooling geometries that are often overlooked in student-scale propulsion projects due to design complexity and iteration time.
-       </p>
-       <p>
-        By integrating computational optimisation with additive manufacturing constraints, the project aims to push the design space of small regeneratively cooled engines further than is typically achievable through conventional design approaches.
-       </p>
-      </div>
-     </div>
-     <div class="modal-section">
-      <h3>
-       Computational Workflow
-      </h3>
-      <p class="section-intro-modal">
-       Simplified workflow of the custom one-dimensional optimisation model used to iteratively solve regenerative cooling geometry, pressure drop, thermal loading, and structural constraints along the engine.
-      </p>
-      <div class="workflow-card">
-       <img alt="NERVA-ONE computational workflow diagram" class="workflow-image" src="images/Code-Workflow.png"/>
-      </div>
-     </div>
-     <div class="modal-section injector-section">
-      <div class="injector-layout">
-       <div class="injector-text">
-        <h3>
-         Injector and Manifold
-        </h3>
-        <p>
-         The injector system uses a triplet unlike-impinging injector configuration, designed to balance resultant momentum and promote efficient atomisation prior to combustion. The injector incorporates 20 nitrous oxide injection ports at 1 mm diameter, 10 ethanol injection ports at 0.6 mm diameter, and 10 film-cooling ports at 0.4 mm diameter.
-        </p>
-        <p>
-         Film cooling accounts for approximately 5% of the total system mass flow rate and provides the primary thermal protection along the chamber wall, significantly reducing local heat flux within the combustion chamber.
-        </p>
-        <p>
-         The manifold and thrust chamber are additively manufactured in AlSi10Mg using Selective Laser Melting, while the injector itself is machined from brass to achieve the required tolerances for the small injection orifices. Sealing between the injector and combustion chamber is achieved using a graphite-reinforced steel gasket to accommodate the dissimilar materials and operating pressures within the assembly.
-        </p>
-       </div>
-       <div class="injector-image-card">
-        <img alt="Injector and manifold assembly render" class="injector-image" src="images/Injector-design.png"/>
-       </div>
-      </div>
-     </div>
-     <div class="modal-section">
-      <h3>
-       Future Work
-      </h3>
-      <p class="section-intro-modal">
-       Further development will focus on expanding both the propulsion platform and the parametric design tools established throughout this research.
-      </p>
-      <div class="future-grid">
-       <div class="feature-card">
-        <h4>
-         Green Propellant Alternatives
-        </h4>
-        <p>
-         Investigate self-pressurising fuel alternatives to replace ethanol, reducing feed system complexity while improving mass, cost, and integration efficiency.
-        </p>
-       </div>
-       <div class="feature-card">
-        <h4>
-         User-Facing Cooling Tool
-        </h4>
-        <p>
-         Develop an interface for the cooling optimisation code so key engine parameters can be modified without directly editing the underlying Python codebase.
-        </p>
-       </div>
-       <div class="feature-card">
-        <h4>
-         Parametric Chamber Generation
-        </h4>
-        <p>
-         Expand automated thrust chamber generation with selectable cooling strategies, helix angles, pressure drop limits, thermal constraints, and manufacturing rules.
-        </p>
-       </div>
-       <div class="feature-card">
-        <h4>
-         Bifurcated Channel Study
-        </h4>
-        <p>
-         Compare bifurcated and non-bifurcated cooling channel geometries to evaluate thermal performance, pressure drop, and manufacturability trade-offs.
-        </p>
-       </div>
-       <div class="feature-card">
-        <h4>
-         Monolithic SLM Architecture
-        </h4>
-        <p>
-         Transition toward a single-part SLM-manufactured engine architecture to reduce assembly complexity and enable more advanced internal cooling geometries.
-        </p>
-       </div>
-       <div class="feature-card">
-        <h4>
-         Student Research Platform
-        </h4>
-        <p>
-         Expand NERVA-ONE into a multidisciplinary framework for future student thesis work across propulsion, thermal analysis, manufacturing, and systems engineering.
-        </p>
-       </div>
-      </div>
-     </div>
-     <div class="modal-section">
-      <h3>
-       Gallery
-      </h3>
-      <p class="section-intro-modal">
-       Additional renders, prototype images, section views, and testing visuals.
-      </p>
-      <div class="gallery">
-       <img alt="NERVA-ONE render" src="images/NERVA-ONE.png"/>
-      </div>
-     </div>
+<div class="modal-section">
+  <h3>Future Work</h3>
+
+  <p class="section-intro-modal">
+    Further development will focus on expanding both the propulsion platform and the parametric design tools established throughout this research.
+  </p>
+
+  <div class="future-grid">
+    <div class="feature-card">
+      <h4>Green Propellant Alternatives</h4>
+      <p>Investigate self-pressurising fuel alternatives to replace ethanol, reducing feed system complexity while improving mass, cost, and integration efficiency.</p>
     </div>
-   </div>
+
+    <div class="feature-card">
+      <h4>User-Facing Cooling Tool</h4>
+      <p>Develop an interface for the cooling optimisation code so key engine parameters can be modified without directly editing the underlying Python codebase.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4>Parametric Chamber Generation</h4>
+      <p>Expand automated thrust chamber generation with selectable cooling strategies, helix angles, pressure drop limits, thermal constraints, and manufacturing rules.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4>Bifurcated Channel Study</h4>
+      <p>Compare bifurcated and non-bifurcated cooling channel geometries to evaluate thermal performance, pressure drop, and manufacturability trade-offs.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4>Monolithic SLM Architecture</h4>
+      <p>Transition toward a single-part SLM-manufactured engine architecture to reduce assembly complexity and enable more advanced internal cooling geometries.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4>Student Research Platform</h4>
+      <p>Expand NERVA-ONE into a multidisciplinary framework for future student thesis work across propulsion, thermal analysis, manufacturing, and systems engineering.</p>
+    </div>
   </div>
+</div>
+        <div class="modal-section">
+          <h3>Gallery</h3>
+          <p class="section-intro-modal">
+            Additional renders, prototype images, section views, and testing visuals.
+          </p>
+
+          <div class="gallery">
+            <img src="images/NERVA-ONE.png" alt="NERVA-ONE render">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MODULAR GEARBOX POPUP -->
-  <div class="modal" id="gearboxModal">
-   <div class="modal-content">
-    <span class="close" onclick="closeModal('gearboxModal')">
-     &times;
-    </span>
-    <div class="modal-scroll">
-     <div class="modal-header">
-      <p class="modal-eyebrow">
-       Mechanical Design &bull; DFMA &bull; Mechanisms
-      </p>
-      <h2>
-       Modular 3-Stage Planetary Gearbox
-      </h2>
-     </div>
-     <div class="modal-hero-grid">
-      <div>
-       <p class="modal-lead">
-        A modular three-stage planetary gearbox developed as part of a competitive mechanical design project. The system was designed to lift a prescribed load within a target time while balancing torque transmission, manufacturability, assembly simplicity, and prototype reliability.
-       </p>
-       <p class="modal-lead">
-        The gearbox achieved a total reduction ratio of 47:1 through a compact three-stage planetary arrangement designed to operate within strict geometric and material constraints while delivering the required output torque for lifting a 25 kg load (~110 Nm). A major focus of the project was balancing mechanical performance with practical fabrication methods. The final assembly incorporated both CNC-machined and additively manufactured components, alongside detailed shaft, bearing, and gear train analysis to ensure reliable operation under high loading conditions.
-       </p>
-      </div>
-      <img alt="Modular planetary gearbox render" class="modal-hero-image" src="images/Gearbox5.png"/>
-     </div>
-     <div class="modal-section project-popup-gallery">
-      <h3>
-       Gallery
-      </h3>
-      <p class="section-intro-modal">
-       Additional renders and prototype views from the gearbox design process.
-      </p>
-      <div class="gearbox-gallery">
-       <div class="gearbox-gallery-item">
-        <img alt="Machined gearbox components" src="images/Gearbox3.png"/>
-       </div>
-       <div class="gearbox-gallery-item">
-        <img alt="Gearbox CAD render" src="images/Gearbox4.png"/>
-       </div>
-       <div class="gearbox-gallery-item">
-        <img alt="Assembled gearbox prototype" src="images/Gearbox6.png"/>
-       </div>
-       <div class="gearbox-gallery-wide">
-        <img alt="Exploded gearbox assembly" src="images/Gearbox7.png"/>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
+
+  <div id="gearboxModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('gearboxModal')">&times;</span>
+
+      <div class="modal-scroll">
+        <div class="modal-header">
+          <p class="modal-eyebrow">Mechanical Design • DFMA • Mechanisms</p>
+          <h2>Modular 3-Stage Planetary Gearbox</h2>
+        </div>
+
+        <div class="modal-hero-grid">
+          <div>
+            <p class="modal-lead">
+              A modular three-stage planetary gearbox developed as part of a competitive mechanical design project. The system was designed to lift a prescribed load within a target time while balancing torque transmission, manufacturability, assembly simplicity, and prototype reliability.
+            </p>
+
+            <p class="modal-lead">
+The gearbox achieved a total reduction ratio of 47:1 through a compact three-stage planetary arrangement designed to operate within strict geometric and material constraints while delivering the required output torque for lifting a 25 kg load (~110 Nm). A major focus of the project was balancing mechanical performance with practical fabrication methods. The final assembly incorporated both CNC-machined and additively manufactured components, alongside detailed shaft, bearing, and gear train analysis to ensure reliable operation under high loading conditions.            </p>
+          </div>
+
+          <img src="images/Gearbox5.png" alt="Modular planetary gearbox render" class="modal-hero-image">
+        </div>
+
+        <div class="modal-section project-popup-gallery">
+          <h3>Gallery</h3>
+          <p class="section-intro-modal">Additional renders and prototype views from the gearbox design process.</p>
+          <div class="gearbox-gallery">
+  <div class="gearbox-gallery-item">
+    <img src="images/Gearbox3.png" alt="Machined gearbox components">
   </div>
+
+  <div class="gearbox-gallery-item">
+    <img src="images/Gearbox4.png" alt="Gearbox CAD render">
+  </div>
+
+  <div class="gearbox-gallery-item">
+    <img src="images/Gearbox6.png" alt="Assembled gearbox prototype">
+  </div>
+
+  <div class="gearbox-gallery-wide">
+    <img src="images/Gearbox7.png" alt="Exploded gearbox assembly">
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- BLADE RUNNER POPUP -->
-  <div class="modal" id="monorailModal">
-   <div class="modal-content">
-    <span class="close" onclick="closeModal('monorailModal')">
-     &times;
-    </span>
-    <div class="modal-scroll">
-     <div class="modal-header">
-      <p class="modal-eyebrow">
-       CAD &bull; Electronics Packaging &bull; 3D Printing
+
+  <div id="monorailModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('monorailModal')">&times;</span>
+
+      <div class="modal-scroll">
+        <div class="modal-header">
+          <p class="modal-eyebrow">CAD • Electronics Packaging • 3D Printing</p>
+          <h2>Collaborative University Engineering Projects</h2>
+        </div>
+
+        <div class="modal-section project-combo-section">
+  <div class="project-combo-layout">
+    <div class="project-combo-text">
+      <h3>Blade Runner Monorail Transit</h3>
+      <p>
+        A collaborative university engineering project focused on the design and prototyping of a scaled monorail transit system. The project combined CAD modelling, electronics packaging, ultrasonic sensing, PCB integration, and additive manufacturing to produce a compact functional prototype.
       </p>
-      <h2>
-       Collaborative University Engineering Projects
-      </h2>
-     </div>
-     <div class="modal-section project-combo-section">
-      <div class="project-combo-layout">
-       <div class="project-combo-text">
-        <h3>
-         Blade Runner Monorail Transit
-        </h3>
-        <p>
-         A collaborative university engineering project focused on the design and prototyping of a scaled monorail transit system. The project combined CAD modelling, electronics packaging, ultrasonic sensing, PCB integration, and additive manufacturing to produce a compact functional prototype.
-        </p>
-        <p>
-         The design was developed with a focus on modular assembly, internal component packaging, wiring access, and practical 3D-printing constraints.
-        </p>
-       </div>
-       <img alt="Blade Runner monorail render" class="project-combo-image" src="images/Monorail.png"/>
-      </div>
-      <h3 class="project-gallery-title">
-       Gallery
-      </h3>
-      <p class="project-gallery-subtitle">
-       Additional renders and development visuals from the project process.
+      <p>
+        The design was developed with a focus on modular assembly, internal component packaging, wiring access, and practical 3D-printing constraints.
       </p>
-      <div class="project-combo-gallery">
-       <img alt="Monorail image" src="images/Train1.png"/>
-       <img alt="Monorail image" src="images/Train2.png"/>
-       <img alt="Monorail image" src="images/Train3.png"/>
-       <img alt="Monorail image" src="images/Train4.png"/>
-       <img alt="Monorail image" src="images/Train5.png"/>
-       <img alt="Monorail image" src="images/Train6.png"/>
-       <img alt="Monorail image" src="images/Train7.png"/>
-      </div>
-     </div>
-     <div class="modal-section project-combo-section">
-      <div class="project-combo-layout">
-       <div class="project-combo-text">
-        <h3>
-         Structural Bridge Mechanism
-        </h3>
-        <p>
-         A collaborative university engineering project centred on the design, analysis, and fabrication of a lightweight structural bridge prototype. The work combined CAD modelling, structural optimisation, manufacturing planning, and physical testing.
-        </p>
-        <p>
-         The project focused on developing a manufacturable bridge structure capable of balancing strength, stiffness, weight, assembly practicality, and real-world testing performance.
-        </p>
-       </div>
-       <img alt="Structural bridge mechanism render" class="project-combo-image" src="images/Bridge4.png"/>
-      </div>
-      <h3 class="project-gallery-title">
-       Gallery
-      </h3>
-      <p class="project-gallery-subtitle">
-       Additional renders and development visuals from the project process.
-      </p>
-      <div class="project-combo-gallery">
-       <img alt="Bridge image" src="images/Bridge1.png"/>
-       <img alt="Bridge image" src="images/Bridge2.png"/>
-       <img alt="Bridge image" src="images/Bridge3.png"/>
-      </div>
-     </div>
     </div>
-   </div>
+
+    <img src="images/Monorail.png" alt="Blade Runner monorail render" class="project-combo-image">
   </div>
+            <h3 class="project-gallery-title">Gallery</h3>
+<p class="project-gallery-subtitle">
+  Additional renders and development visuals from the project process.
+</p>
+            <div class="project-combo-gallery">
+  <img src="images/Train1.png" alt="Monorail image">
+  <img src="images/Train2.png" alt="Monorail image">
+                  <img src="images/Train3.png" alt="Monorail image">
+  <img src="images/Train4.png" alt="Monorail image">
+                  <img src="images/Train5.png" alt="Monorail image">
+  <img src="images/Train6.png" alt="Monorail image">
+                  <img src="images/Train7.png" alt="Monorail image">
+
+</div>
+</div>
+
+<div class="modal-section project-combo-section">
+  <div class="project-combo-layout">
+    <div class="project-combo-text">
+      <h3>Structural Bridge Mechanism</h3>
+      <p>
+        A collaborative university engineering project centred on the design, analysis, and fabrication of a lightweight structural bridge prototype. The work combined CAD modelling, structural optimisation, manufacturing planning, and physical testing.
+      </p>
+      <p>
+        The project focused on developing a manufacturable bridge structure capable of balancing strength, stiffness, weight, assembly practicality, and real-world testing performance.
+      </p>
+    </div>
+
+    <img src="images/Bridge4.png" alt="Structural bridge mechanism render" class="project-combo-image">
+  </div>
+    <h3 class="project-gallery-title">Gallery</h3>
+<p class="project-gallery-subtitle">
+  Additional renders and development visuals from the project process.
+</p>
+    <div class="project-combo-gallery">
+  <img src="images/Bridge1.png" alt="Bridge image">
+  <img src="images/Bridge2.png" alt="Bridge image">
+        <img src="images/Bridge3.png" alt="Bridge image">
+</div>
+</div>
+
   <!-- MANUFACTURING POPUP -->
-  <div class="modal" id="manufacturingModal">
-   <div class="modal-content">
-    <span class="close" onclick="closeModal('manufacturingModal')">
-     &times;
-    </span>
-    <div class="modal-scroll">
-     <div class="modal-header">
-      <p class="modal-eyebrow">
-       Manufacturing &bull; Supplier Communication &bull; Prototyping
-      </p>
-      <h2>
-       Manufacturing &amp; Prototyping
-      </h2>
-     </div>
-     <div class="modal-hero-grid">
-      <div>
-       <p class="modal-lead">
-        Practical manufacturing and prototyping experience spanning CAD preparation, technical drawing generation, machining feasibility, additive manufacturing optimisation, and iterative prototype refinement. Oliver&rsquo;s work focuses on bridging the gap between digital design and real-world production by incorporating manufacturing constraints directly into the engineering process. This includes consideration of tolerances, surface finish requirements, post-processing workflows, assembly accessibility, material selection, and the practical limitations of both conventional and additive manufacturing methods. Through continuous design iteration and hands-on fabrication experience, he has developed a strong understanding of designing components not only for performance, but also for manufacturability, reliability, and efficient assembly.
-       </p>
+
+  <div id="manufacturingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('manufacturingModal')">&times;</span>
+
+      <div class="modal-scroll">
+        <div class="modal-header">
+          <p class="modal-eyebrow">Manufacturing • Supplier Communication • Prototyping</p>
+          <h2>Manufacturing & Prototyping</h2>
+        </div>
+
+        <div class="modal-hero-grid">
+          <div>
+            <p class="modal-lead">
+Practical manufacturing and prototyping experience spanning CAD preparation, technical drawing generation, machining feasibility, additive manufacturing optimisation, and iterative prototype refinement. Oliver’s work focuses on bridging the gap between digital design and real-world production by incorporating manufacturing constraints directly into the engineering process. This includes consideration of tolerances, surface finish requirements, post-processing workflows, assembly accessibility, material selection, and the practical limitations of both conventional and additive manufacturing methods. Through continuous design iteration and hands-on fabrication experience, he has developed a strong understanding of designing components not only for performance, but also for manufacturability, reliability, and efficient assembly.            </p>
+
+          </div>
+
+          <img src="images/Manufacturing%201.png" alt="Manufacturing and prototyping work" class="modal-hero-image">
+        </div>
+
+        <div class="modal-section">
+          <h3>Capabilities Demonstrated</h3>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Technical Drawings</h4>
+              <p>Preparation of drawings, feature callouts, dimensions, and manufacturing notes for supplier review.</p>
+            </div>
+
+            <div class="feature-card">
+              <h4>Design for Manufacture</h4>
+              <p>Consideration of machining constraints, additive manufacturing limitations, assembly access, post-processing requirements, and material selection throughout the design process.</p>
+            </div>
+
+            <div class="feature-card">
+              <h4>Prototype Iteration</h4>
+              <p>Using fabrication feedback to refine CAD geometry, assembly strategy, and manufacturing feasibility.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-section project-popup-gallery">
+          <h3>Gallery</h3>
+          <p class="section-intro-modal">Additional manufacturing, prototyping, and project development visuals.</p>
+<div class="gallery">
+  <img src="images/Manufacturing2.png" alt="Manufacturing drawing">
+  <img src="images/Manufacturing3.png" alt="Machined injector prototype" class="manufacturing-closeup">
+</div>
+        </div>
       </div>
-      <img alt="Manufacturing and prototyping work" class="modal-hero-image" src="images/Manufacturing%201.png"/>
-     </div>
-     <div class="modal-section">
-      <h3>
-       Capabilities Demonstrated
-      </h3>
-      <div class="feature-grid">
-       <div class="feature-card">
-        <h4>
-         Technical Drawings
-        </h4>
-        <p>
-         Preparation of drawings, feature callouts, dimensions, and manufacturing notes for supplier review.
-        </p>
-       </div>
-       <div class="feature-card">
-        <h4>
-         Design for Manufacture
-        </h4>
-        <p>
-         Consideration of machining constraints, additive manufacturing limitations, assembly access, post-processing requirements, and material selection throughout the design process.
-        </p>
-       </div>
-       <div class="feature-card">
-        <h4>
-         Prototype Iteration
-        </h4>
-        <p>
-         Using fabrication feedback to refine CAD geometry, assembly strategy, and manufacturing feasibility.
-        </p>
-       </div>
-      </div>
-     </div>
-     <div class="modal-section project-popup-gallery">
-      <h3>
-       Gallery
-      </h3>
-      <p class="section-intro-modal">
-       Additional manufacturing, prototyping, and project development visuals.
-      </p>
-      <div class="gallery">
-       <img alt="Manufacturing drawing" src="images/Manufacturing2.png"/>
-       <img alt="Machined injector prototype" class="manufacturing-closeup" src="images/Manufacturing3.png"/>
-      </div>
-     </div>
     </div>
-   </div>
   </div>
+
   <script>
-   function openModal(id) {
+    function openModal(id) {
       const modal = document.getElementById(id);
       if (!modal) return;
       modal.classList.add("active");
@@ -2200,5 +1879,51 @@
       }
     });
   </script>
- </body>
+
+  <script>
+    function updatePageBackground() {
+      const hero = document.querySelector('.hero');
+      const skills = document.getElementById('skills');
+      const experience = document.getElementById('experience');
+
+      if (!hero || !skills || !experience) return;
+
+      const scrollY = window.scrollY || window.pageYOffset;
+      const viewportHeight = window.innerHeight || 1;
+
+      const heroEnd = hero.offsetTop + hero.offsetHeight;
+      const skillsStart = skills.offsetTop;
+      const experienceStart = experience.offsetTop;
+
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+      /*
+        Lunar background behaviour:
+        - Already visible as soon as the page moves past the hero.
+        - No fade-in.
+        - Fades out quickly, leaving a clean dark section before grass appears.
+      */
+      const lunarFadeStart = heroEnd + viewportHeight * 0.00;
+      const lunarFadeDistance = viewportHeight * 2;
+      const lunarOpacity = 1 - clamp((scrollY - lunarFadeStart) / lunarFadeDistance, 0, 1);
+
+      /*
+        Grass background behaviour:
+        - Delayed so there is a section with neither lunar nor grass image.
+        - Appears closer to the lower experience/contact area.
+      */
+      const grassFadeStart = experienceStart - viewportHeight * 1;
+      const grassFadeDistance = viewportHeight * 2;
+      const grassOpacity = clamp((scrollY - grassFadeStart) / grassFadeDistance, 0, 1);
+
+      document.body.style.setProperty('--lunar-opacity', lunarOpacity.toFixed(3));
+      document.body.style.setProperty('--grass-opacity', grassOpacity.toFixed(3));
+    }
+
+    window.addEventListener('scroll', updatePageBackground, { passive: true });
+    window.addEventListener('resize', updatePageBackground);
+    window.addEventListener('load', updatePageBackground);
+    updatePageBackground();
+  </script>
+</body>
 </html>
