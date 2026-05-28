@@ -1,1364 +1,2207 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oliver Nicholson | Mechanical Engineering Portfolio</title>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Oliver Nicholson | Mechanical Engineering Portfolio
+  </title>
   <style>
-* {
-  margin: 0;
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080b10;
+      color: #f4f4f4;
+      line-height: 1.6;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(8, 11, 16, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    nav .logo {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 0.95rem;
+      color: #c8c8c8;
+    }
+
+    nav ul li:hover {
+      color: white;
+    }
+
+    section {
+      padding: 100px 8%;
+      position: relative;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 18px;
+      letter-spacing: -2px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      color: #bcbcbc;
+      margin-bottom: 44px;
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 26px;
+      padding: 28px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    .card p {
+      color: #bdbdbd;
+      font-size: 0.98rem;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: 0.25s ease;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .btn.primary {
+      background: #f4f4f4;
+      color: #080b10;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      color: #bfe8ff;
+      border: 1px solid rgba(114, 199, 255, 0.32);
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(114, 199, 255, 0.08);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+      padding: 130px 8% 80px;
+      background:
+        radial-gradient(circle at 75% 35%, rgba(0, 153, 255, 0.25), transparent 32%),
+        radial-gradient(circle at 20% 80%, rgba(255, 122, 0, 0.12), transparent 30%),
+        #080b10;
+    }
+
+    .eyebrow {
+      color: #72c7ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      line-height: 0.92;
+      font-weight: 800;
+      letter-spacing: -4px;
+      text-align: center;
+      font-size: 4.44rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #c7c7c7;
+      font-size: 1.14rem;
+      margin-bottom: 34px;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 450px;
+      height: 520px;
+      overflow: hidden;
+      border-radius: 34px;
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 45px 100px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* FEATURED ARTICLE */
+
+    .article-card {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .article-tags {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+      margin-bottom: 24px;
+    }
+
+    .article-image-card {
+      background:
+        linear-gradient(rgba(8, 12, 20, 0.68), rgba(8, 12, 20, 0.82)),
+        url("images/NERVA-JakeandI.png");
+      background-size: cover;
+      background-position: center;
+      border-radius: 26px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    /* PROJECT CARDS */
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 0;
+      overflow: hidden;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 26px;
+      transition: 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      padding: 22px;
+      overflow: hidden;
+      border-radius: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #132033, #080b10);
+    }
+
+    .project-image img,
+    .project-image video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+      display: block;
+    }
+
+    .project-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 28px;
+    }
+
+    .project-content h3 {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .project-content p {
+      color: #c7c7c7;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .project-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .read-more-text {
+      margin-top: auto;
+      padding-top: 30px;
+      text-align: center;
+      color: #69bfff;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .project-card:hover .read-more-text {
+      color: white;
+      transform: translateX(4px);
+    }
+
+    /* EXPERIENCE */
+
+    .timeline {
+      border-left: 1px solid rgba(255, 255, 255, 0.16);
+      padding-left: 28px;
+    }
+
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -36px;
+      top: 7px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #72c7ff;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.18rem;
+      margin-bottom: 5px;
+    }
+
+    .timeline-item span {
+      display: block;
+      color: #72c7ff;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: #bdbdbd;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(180deg, #080b10, #111827);
+    }
+
+    .contact p {
+      color: #c7c7c7;
+      max-width: 640px;
+      margin: 0 auto 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 8%;
+      color: #777;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* MODALS */
+
+    .modal {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(14px);
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      position: relative;
+      width: min(1180px, 92vw);
+      max-height: 88vh;
+      overflow: hidden;
+      padding: 0;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(114, 199, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 8% 92%, rgba(36, 96, 145, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(11, 18, 28, 0.98), rgba(8, 11, 16, 0.98));
+      border: 1px solid rgba(114, 199, 255, 0.14);
+      box-shadow:
+        0 40px 120px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    .modal-scroll {
+      max-height: 88vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 56px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(114, 199, 255, 0.32) transparent;
+    }
+
+    .modal-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modal-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .modal-scroll::-webkit-scrollbar-thumb {
+      background: rgba(114, 199, 255, 0.28);
+      border-radius: 20px;
+    }
+
+    .modal-scroll::-webkit-scrollbar-thumb:hover {
+      background: rgba(114, 199, 255, 0.42);
+    }
+
+    .close {
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      z-index: 10;
+    }
+
+    .close:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.08);
+    }
+
+    .modal-eyebrow {
+      display: block;
+      width: 100%;
+      max-width: none !important;
+      color: #72c7ff !important;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.82rem !important;
+      line-height: 1.4 !important;
+      font-weight: 700;
+      margin: 0 0 14px !important;
+      text-align: center !important;
+    }
+
+    .modal-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .modal-header h2,
+    .modal-content h2 {
+      font-size: clamp(2rem, 3.6vw, 3.15rem);
+      line-height: 1.08;
+      letter-spacing: -1.6px;
+      text-align: center;
+      margin: 0;
+      color: white;
+      width: 100%;
+    }
+
+    .modal-content h3 {
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+      color: white;
+    }
+
+    .modal-content h4 {
+      color: white;
+      font-size: 1.12rem;
+      margin-bottom: 12px;
+    }
+
+    .modal-content p {
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.85;
+      font-size: 1.03rem;
+      max-width: 850px;
+    }
+
+    .modal-hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 46px;
+      align-items: center;
+      margin-bottom: 54px;
+    }
+
+    .modal-lead {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 650px;
+      margin-bottom: 18px;
+    }
+
+    .modal-hero-image {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 32px;
+      border: 1px solid rgba(114, 199, 255, 0.16);
+      box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.45),
+        0 0 60px rgba(114, 199, 255, 0.08);
+      display: block;
+    }
+
+    .modal-section {
+      margin-top: 68px;
+      padding-top: 52px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-intro-modal {
+      max-width: 850px;
+      margin-bottom: 28px;
+    }
+
+    .modern-param-table {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 34px;
+      margin-top: 34px;
+      padding: 34px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(16, 36, 62, 0.88), rgba(7, 14, 26, 0.96));
+      border: 1px solid rgba(114, 199, 255, 0.22);
+      box-shadow:
+        0 0 35px rgba(0, 120, 255, 0.08),
+        inset 0 0 35px rgba(255, 255, 255, 0.015);
+    }
+
+    .param-col {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .param-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: baseline;
+    }
+
+    .param-row span {
+      color: #72c7ff;
+      font-size: 1.02rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .param-row small {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.62rem;
+      margin-left: 3px;
+      font-weight: 500;
+    }
+
+    .param-row p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.96rem;
+      line-height: 1.35;
+      max-width: none;
+    }
+
+    .param-divider {
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, rgba(114, 199, 255, 0.48), transparent);
+      border-radius: 10px;
+    }
+
+    .thrust-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 470px;
+      gap: 54px;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .thrust-text {
+      min-width: 0;
+    }
+
+    .thrust-text p {
+      margin-bottom: 22px;
+      max-width: none;
+    }
+
+    .thrust-image {
+      width: 100%;
+      max-width: 470px;
+      height: auto;
+      justify-self: end;
+      align-self: start;
+      border-radius: 28px;
+      border: 1px solid rgba(114, 199, 255, 0.14);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28);
+      display: block;
+    }
+
+    .full-width-text {
+      margin-top: 34px;
+    }
+
+    .full-width-text p {
+      max-width: none;
+      margin-bottom: 16px;
+    }
+
+.workflow-card {
+  width: min(900px, 100%);
+  margin: 28px auto 0;
+
   padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #080b10;
-  color: #f4f4f4;
-  line-height: 1.6;
-}
-
-body.modal-open {
   overflow: hidden;
+
+  border-radius: 26px;
+
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(114,199,255,0.14);
+
+  box-shadow: 0 25px 70px rgba(0,0,0,0.28);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+    .workflow-caption {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.98rem;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      max-width: none;
+    }
 
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: rgba(8, 11, 16, 0.82);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-nav .logo {
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-nav ul {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-  font-size: 0.95rem;
-  color: #c8c8c8;
-}
-
-nav ul li:hover {
-  color: white;
-}
-
-.hero {
-  min-height: 100vh;
+    .future-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 50px;
-  padding: 130px 8% 80px;
-  background:
-    radial-gradient(circle at 75% 35%, rgba(0, 153, 255, 0.25), transparent 32%),
-    radial-gradient(circle at 20% 80%, rgba(255, 122, 0, 0.12), transparent 30%),
-    #080b10;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 28px;
 }
 
-.eyebrow {
-  color: #72c7ff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.82rem;
+@media (max-width: 900px) {
+  .future-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
+.workflow-image {
   width: 100%;
-  text-align: center;
+  height: auto;
 
-  margin-bottom: 18px;
-}
-
-.hero h1 {
-  line-height: 0.92;
-  font-weight: 800;
-  letter-spacing: -4px;
-  text-align: center;
-    font-size: 4.44rem;
-}
-
-.hero h1 .name-line {
-  font-size: 4.44rem;
   display: block;
+  margin: 0 auto;
+
+  border-radius: 18px;
+
+  object-fit: contain;
+
+  max-height: none;
 }
 
-.hero-subtitle {
-  color: #69bfff;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.95rem;
+    .injector-section {
+      margin-top: 70px;
+      padding-top: 55px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-  display: flex;
-  justify-content: center;
+    .injector-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 0.95fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 28px;
+    }
 
+    .injector-text {
+      min-width: 0;
+    }
+
+    .injector-text h3 {
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .injector-text p {
+      margin-bottom: 20px;
+      line-height: 1.85;
+      max-width: none;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .injector-image-card {
   width: 100%;
-  text-align: center;
+  max-width: 560px;
+  justify-self: end;
 
-  margin-bottom: 26px;
-}
-
-.hero p {
-  max-width: 680px;
-  color: #c7c7c7;
-  font-size: 1.14rem;
-  margin-bottom: 34px;
-}
-
-.buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 13px 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.18);
-  transition: 0.25s ease;
-  font-weight: 600;
-}
-
-.btn.primary {
-  background: #f4f4f4;
-  color: #080b10;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255,255,255,0.45);
-}
-
-.hero-card {
-  width: 100%;
-  max-width: 450px;
-  height: 520px;
+  border-radius: 30px;
   overflow: hidden;
-  border-radius: 34px;
-  background: #111;
-  border: 1px solid rgba(255,255,255,0.08);
-  position: relative;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16,36,62,0.55),
+      rgba(7,14,26,0.82)
+    );
+
+  border: 1px solid rgba(114,199,255,0.12);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.24);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero-card img {
+.injector-image {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  padding: 18px;
+}
+
+    .split-modal {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 36px;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .split-modal img,
+    .wide-modal-image {
+      width: 100%;
+      border-radius: 26px;
+      border: 1px solid rgba(114, 199, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      display: block;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .split-modal img {
+      height: 360px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .wide-modal-image {
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      margin-top: 30px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .feature-card {
+      padding: 26px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(114, 199, 255, 0.13);
+    }
+
+    .gearbox-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.gearbox-gallery-item {
+  height: 420px;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(114,199,255,0.12);
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.22);
+}
+
+.gearbox-gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-}
-
-.hero-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 45px 100px rgba(0,0,0,0.6);
-}
-
-.hero-render {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
   object-position: center;
   display: block;
 }
 
-section {
-  padding: 100px 8%;
-}
-
-.section-title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  margin-bottom: 18px;
-  letter-spacing: -2px;
-}
-
-.section-intro {
-  max-width: 760px;
-  color: #bcbcbc;
-  margin-bottom: 44px;
-  font-size: 1.05rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.card {
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 26px;
-  padding: 28px;
-  transition: 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  background: rgba(255,255,255,0.07);
-}
-
-.card h3 {
-  margin-bottom: 12px;
-  font-size: 1.35rem;
-}
-
-.card p {
-  color: #bdbdbd;
-  font-size: 0.98rem;
-}
-
-.split {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 50px;
-  align-items: start;
-}
-
-#about .section-intro {
-  max-width: 700px;
-}
-
-.about-headshot {
-  width: 340px;
-  margin-top: 35px;
-  margin-left: 0;
-  border-radius: 32px;
-  display: block;
-  object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.about-headshot:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
-}
-
-.projects-grid,
-#projects .grid {
-  align-items: stretch;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0;
-  overflow: hidden;
-  cursor: pointer;
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 26px;
-  transition: 0.25s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  background: rgba(255,255,255,0.07);
-}
-
-.project-image {
+.gearbox-gallery-wide {
+  grid-column: 1 / -1;
   height: 260px;
-  padding: 22px;
-  overflow: hidden;
-  border-radius: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #7b8794;
-  font-size: 0.92rem;
-  text-align: center;
-  background: linear-gradient(135deg, #132033, #080b10);
-}
-
-.project-image {
-  height: 260;
-  overflow: hidden;
-  border-radius: 30px;
-}
-
-.project-image img {
-  width: 100%;
-  height: 90%;
-  object-fit: cover;
-  display: block;
-  border-radius: 22px;
-}
-
-.project-image video {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 22px;
-  display: block;
-}
-
-.project-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 28px;
-}
-
-.project-content h3 {
-  text-align: center;
-  margin-bottom: 18px;
-}
-
-.project-content p {
-  color: #c7c7c7;
-  line-height: 1.7;
-  text-align: left;
-}
-
-.project-tags {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
-}
-
-.article-tags {
-  display: flex !important;
-  justify-content: flex-start !important;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
-  margin-bottom: 24px;
-}
-
-.tag {
-  font-size: 0.78rem;
-  color: #bfe8ff;
-  border: 1px solid rgba(114,199,255,0.32);
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: rgba(114,199,255,0.08);
-}
-
-.project-readmore,
-.read-more-text {
-  margin-top: auto;
-  padding-top: 30px;
-  text-align: center;
-  color: #69bfff;
-  font-weight: 600;
-  transition: 0.25s ease;
-}
-
-.project-card:hover .project-readmore,
-.project-card:hover .read-more-text {
-  color: white;
-  transform: translateX(4px);
-}
-
-.project-collage {
-  display: grid;
-  grid-template-columns: 1.35fr 0.8fr 0.8fr;
-  grid-template-rows: 230px 230px;
-  gap: 18px;
-  margin-bottom: 42px;
-}
-
-.collage-item {
-  position: relative;
-  overflow: hidden;
+  margin-top: 4px;
   border-radius: 28px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: linear-gradient(135deg, #182131, #080b10);
-  min-height: 200px;
+  overflow: hidden;
+  border: 1px solid rgba(114,199,255,0.12);
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.24);
 }
 
-.collage-item.large {
-  grid-row: span 2;
-}
-
-.collage-item img {
+.gearbox-gallery-wide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  filter: saturate(0.95) contrast(1.05);
-  transition: 0.35s ease;
 }
 
-.collage-item:hover img {
-  transform: scale(1.05);
+@media (max-width: 900px) {
+  .gearbox-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gearbox-gallery-item,
+  .gearbox-gallery-wide {
+    height: 300px;
+  }
 }
 
-.collage-label {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  font-size: 0.9rem;
-  color: #f1f1f1;
+.project-combo-section {
+  margin-top: 52px;
+  padding-top: 46px;
 }
 
-.collage-placeholder {
-  height: 100%;
-  display: flex;
+.project-combo-section:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.project-combo-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 46px;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
-  color: #7b8794;
-  text-align: center;
-  font-size: 0.9rem;
 }
 
-.article-haze {
-  margin-top: 28px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  opacity: 0.82;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(18px);
-  transition: 0.35s ease;
-}
-
-.article-haze:hover {
-  opacity: 1;
-  transform: translateY(-4px);
-}
-
-.article-haze img {
-  width: 100%;
-  display: block;
-  filter: blur(1px) brightness(0.75);
-  transform: scale(1.03);
-}
-
-.timeline {
-  border-left: 1px solid rgba(255,255,255,0.16);
-  padding-left: 28px;
-}
-
-.timeline-item {
-  margin-bottom: 30px;
-  position: relative;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -36px;
-  top: 7px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #72c7ff;
-}
-
-.timeline-item h3 {
-  font-size: 1.18rem;
-  margin-bottom: 5px;
-}
-
-.timeline-item span {
-  display: block;
-  color: #72c7ff;
-  font-size: 0.88rem;
-  margin-bottom: 8px;
-}
-
-.timeline-item p {
-  color: #bdbdbd;
-}
-
-.modal {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(14px);
-}
-
-.modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-content {
-  position: relative;
-
-  width: min(1050px, 92vw);
-  max-height: 88vh;
-  overflow-y: auto;
-
-  padding: 52px;
-
-  border-radius: 22px;
-
-  background:
-    radial-gradient(circle at top right, rgba(40,70,120,0.10), transparent 35%),
-    radial-gradient(circle at bottom left, rgba(120,50,20,0.06), transparent 35%),
-    #0b0f14;
-
-  border: 1px solid rgba(255,255,255,0.08);
-
-  box-shadow:
-    0 40px 120px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.03);
-}
-
-.modal-content h2 {
-  font-size: 2.5rem;
-  line-height: 1.1;
+.project-combo-text h3 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
   margin-bottom: 18px;
-  color: white;
 }
 
-.modal-content p {
-  color: rgba(255,255,255,0.78);
-  font-size: 1.05rem;
-  line-height: 1.8;
-  max-width: 900px;
-  text-align: left;
+.project-combo-text p {
+  max-width: none;
+  margin-bottom: 18px;
 }
 
-.close {
-  position: absolute;
-  top: 24px;
-  right: 30px;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-  transition: all 0.25s ease;
+.project-combo-image {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 28px;
+  border: 1px solid rgba(114,199,255,0.14);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.28);
+  display: block;
 }
 
-.close:hover {
-  background: rgba(255,255,255,0.12);
-  transform: scale(1.08);
+@media (max-width: 900px) {
+  .project-combo-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .project-combo-image {
+    height: 280px;
+  }
 }
 
-.modal-gallery {
+    .feature-card p {
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.70);
+      max-width: none;
+    }
+
+.gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
-  margin-top: 42px;
+  gap: 24px;
+  margin-top: 30px;
 }
 
-.modal-gallery img {
+.project-combo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.project-combo-gallery img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(114,199,255,0.14);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .project-combo-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-combo-gallery img {
+    height: 220px;
+  }
+}
+
+.gallery img,
+.gallery video {
   width: 100%;
   height: 340px;
   object-fit: cover;
+  object-position: center;
   border-radius: 26px;
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.modal-gallery img:hover {
-  transform: translateY(-4px);
-  border-color: rgba(114,199,255,0.35);
-}
-
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.10);
-  border-radius: 20px;
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.18);
-}
-
-.modal-hero {
-  display: grid;
-    grid-template-columns: 1fr;
-  gap: 34px;
-  align-items: center;
-  margin-bottom: 42px;
-}
-
-.modal-hero-top {
-  text-align: center;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.modal-hero-bottom {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.modal-eyebrow {
-  color: #72c7ff !important;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.82rem !important;
-  margin-bottom: 14px;
-}
-
-.modal-hero-bottom img {
-  width: 100%;
-  border-radius: 30px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-}
-
-.modal-section {
-  margin-top: 44px;
-}
-
-.modal-section h3 {
-  font-size: 1.9rem;
-  margin-bottom: 20px;
-}
-
-.modal-gallery.wide {
-  grid-template-columns: 1.2fr 0.8fr;
-}
-
-.modal-feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.modal-feature {
-  padding: 26px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.modal-feature h4 {
-  font-size: 1.15rem;
-  margin-bottom: 12px;
-}
-
-.modal-feature p {
-  font-size: 0.95rem !important;
-  line-height: 1.7 !important;
-}
-
-.spec-table {
-  margin-top: 18px;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.spec-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-
-  padding: 18px 24px;
-
+  border: 1px solid rgba(114,199,255,0.12);
   background: rgba(255,255,255,0.03);
-
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.28);
+  display: block;
 }
 
-.nerva-param-table {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 28px;
+    .modal-hero-image video,
+    video.modal-hero-image {
+      object-fit: cover;
+    }
 
-  padding: 30px;
+    .project-popup-gallery {
+      margin-top: 34px;
+    }
 
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 26px;
+    .transparent-intro {
+      max-width: 900px;
+      margin: 0 auto 34px;
+    }
 
-  margin-top: 22px;
-}
+    .transparent-intro p {
+      max-width: none;
+      text-align: left;
+      margin-bottom: 14px;
+    }
 
-.param-col {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+    .transparent-image-card {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto 58px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(114, 199, 255, 0.16);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.40),
+        0 0 60px rgba(114, 199, 255, 0.06);
+    }
 
-.param-row {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 18px;
-  align-items: baseline;
-}
+    .transparent-banner-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center 58%;
+      display: block;
+    }
 
-.param-row span {
-  color: #d8ff9b;
-  font-size: 1.15rem;
-  font-weight: 500;
-  white-space: nowrap;
-}
+    .transparent-landscape-image {
+      width: 100%;
+      height: auto;
+      max-height: 390px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 28px;
+      border: 1px solid rgba(114, 199, 255, 0.16);
+      display: block;
+      align-self: center;
+    }
 
-.param-row small {
-  color: rgba(255,255,255,0.75);
-  font-size: 0.65rem;
-  margin-left: 3px;
-  text-transform: none;
-}
+    .manufacturing-closeup {
+      object-fit: contain !important;
+      object-position: center;
+      padding: 28px;
+      background: #0b1220;
+    }
 
-.param-row p {
-  margin: 0;
-  color: rgba(255,255,255,0.82);
-  font-size: 1rem;
-  line-height: 1.4;
-  text-align: left;
-}
+    /* RESPONSIVE */
 
-.param-divider {
-  width: 2px;
-  background: rgba(255,255,255,0.35);
-  border-radius: 10px;
-}
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
 
-@media (max-width: 900px) {
-  .nerva-param-table {
-    grid-template-columns: 1fr;
-  }
+      .hero,
+      .split,
+      .grid,
+      .article-card,
+      .modal-hero-grid,
+      .modern-param-table,
+      .thrust-layout,
+      .split-modal,
+      .feature-grid,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
 
-  .param-divider {
-    display: none;
-  }
+      .hero-title {
+        font-size: 3.2rem;
+      }
 
-  .param-row {
-    grid-template-columns: 110px 1fr;
-  }
-}
+      .hero-card {
+        max-width: 420px;
+      }
 
-.spec-row:last-child {
-  border-bottom: none;
-}
+      .modal {
+        padding: 18px;
+      }
 
-.spec-row span:first-child {
-  color: #72c7ff;
-  font-weight: 600;
-}
+      .modal-scroll {
+        padding: 34px;
+      }
 
-section {
-  padding: 100px 8%;
-  position: relative;
-}
+      .modal-hero-image {
+        height: 360px;
+      }
 
-section:not(:first-child) {
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
+      .thrust-layout,
+      .injector-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
 
-section:nth-of-type(even),
-section:nth-of-type(odd) {
-  background: transparent;
-}
+      .thrust-image {
+        max-width: none;
+        width: 100%;
+        justify-self: stretch;
+      }
 
-section::before {
-  display: none;
-}
+      .injector-image-card {
+        height: auto;
+      }
 
-.spec-row span:last-child {
-  color: rgba(255,255,255,0.82);
-  text-align: right;
-}
+      .injector-image {
+        height: auto;
+      }
 
-@media (max-width: 900px) {
-  .modal-hero,
-  .modal-gallery.wide,
-  .modal-feature-grid {
-    grid-template-columns: 1fr;
-  }
+      .param-divider {
+        display: none;
+      }
 
-  .spec-row {
-    flex-direction: column;
-  }
+      .param-row {
+        grid-template-columns: 110px 1fr;
+      }
 
-  .spec-row span:last-child {
-    text-align: left;
-  }
-}
+      .workflow-card {
+        width: 100%;
+        height: 420px;
+      }
 
-.contact {
-  text-align: center;
-  background: linear-gradient(180deg, #080b10, #111827);
-}
-
-.contact p {
-  color: #c7c7c7;
-  max-width: 640px;
-  margin: 0 auto 30px;
-}
-
-footer {
-  text-align: center;
-  padding: 35px 8%;
-  color: #777;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-@media (max-width: 900px) {
-  nav ul {
-    display: none;
-  }
-
-  .hero,
-  .split,
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-
-  .hero-card {
-    max-width: 420px;
-  }
-
-  .modal-gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-gallery img {
-    height: 260px;
-  }
-
-  .modal-content h2 {
-    font-size: 2rem;
-  }
-}
-</style>
-</head>
-<body>
+      .workflow-image {
+        height: 100%;
+      }
+    }
+  </style>
+ </head>
+ <body>
   <nav>
-    <div class="logo">OLIVER NICHOLSON</div>
-    <ul>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+   <div class="logo">
+    OLIVER NICHOLSON
+   </div>
+   <ul>
+    <li>
+     <a href="#projects">
+      Projects
+     </a>
+    </li>
+    <li>
+     <a href="#skills">
+      Skills
+     </a>
+    </li>
+    <li>
+     <a href="#experience">
+      Experience
+     </a>
+    </li>
+    <li>
+     <a href="#contact">
+      Contact
+     </a>
+    </li>
+   </ul>
   </nav>
-
   <header class="hero">
-    <div>
-      <div class="eyebrow">Mechanical Engineering • Propulsion • Design</div>
-<h1 class="hero-title">
-  <span class="name-line">Oliver Nicholson</span>
-  <span>Mechanical Engineer</span>
-</h1>
-        <p>
-        </p>
-      <p>
-          Engineering Honours student specialising in propulsion systems, thermal-fluid analysis, additive manufacturing, CAD design, and technical visualisation. His work focuses on transforming complex engineering concepts into manufacturable, testable, and visually compelling systems through the integration of analytical modelling, practical engineering constraints, and high-quality technical communication.
-      </p>
-      <div class="buttons">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn" href="Oliver%20Nicholson%20CV.pdf" target="_blank">Download Resume</a>
-      </div>
+   <div>
+    <div class="eyebrow">
+     Mechanical Engineering &bull; Propulsion &bull; Design
     </div>
-    <div class="hero-card">
-    <img class="hero-render" src="images/Headshot.png" alt="Headshot">
+    <h1 class="hero-title">
+     <span>
+      Oliver Nicholson
+     </span>
+     <span>
+      Mechanical Engineer
+     </span>
+    </h1>
+    <p>
+     Engineering Honours student specialising in propulsion systems, thermal-fluid analysis, additive manufacturing,
+        CAD design, and technical visualisation. His work focuses on transforming complex engineering concepts into
+        manufacturable, testable, and visually compelling systems through analytical modelling, practical engineering
+        constraints, and high-quality technical communication.
+    </p>
+    <div class="buttons">
+     <a class="btn primary" href="#projects">
+      View Projects
+     </a>
+     <a class="btn" href="Oliver%20Nicholson%20CV.pdf" target="_blank">
+      Download Resume
+     </a>
     </div>
+   </div>
+   <div class="hero-card">
+    <img alt="Oliver Nicholson headshot" src="images/Headshot.png"/>
+   </div>
   </header>
-
   <section id="article">
-    <h2 class="section-title">Featured Article</h2>
-    <p class="section-intro">
-      NERVA-ONE and the broader propulsion research project were featured by Macquarie University’s Lighthouse publication,
+   <h2 class="section-title">
+    Featured Article
+   </h2>
+   <p class="section-intro">
+    NERVA-ONE and the broader propulsion research project were featured by Macquarie University&rsquo;s Lighthouse publication,
       highlighting the motivation behind the project, the engineering challenges involved, and the goal of developing practical
       student-led propulsion capability.
-    </p>
-
-    <div class="card" style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap:32px; align-items:center;">
-      <div>
-        <h3 style="font-size:2rem; margin-bottom:18px;">Macquarie University Lighthouse Feature</h3>
-        <p style="color:#c7c7c7; margin-bottom:20px;">
-          The article explores the development of NERVA-ONE, a regeneratively cooled liquid bipropellant rocket engine,
+   </p>
+   <div class="card article-card">
+    <div>
+     <h3 style="font-size:2rem; margin-bottom:18px;">
+      Macquarie University Lighthouse Feature
+     </h3>
+     <p style="color:#c7c7c7; margin-bottom:20px;">
+      The article explores the development of NERVA-ONE, a regeneratively cooled liquid bipropellant rocket engine,
           alongside the broader vision of creating hands-on aerospace engineering opportunities through undergraduate research,
           additive manufacturing, and propulsion system development.
-        </p>
-
-        <div class="article-tags">
-          <span class="tag">Propulsion</span>
-          <span class="tag">Research</span>
-          <span class="tag">Macquarie University</span>
-          <span class="tag">Aerospace</span>
-        </div>
-
-        <a class="btn primary" href="https://lighthouse.mq.edu.au/article/2026/may-2026/nerva-one-liquid-fuel-rockets" target="_blank">
-          Read Article
-        </a>
-      </div>
-
-      <div style="
-background:
-linear-gradient(rgba(8,12,20,0.68), rgba(8,12,20,0.82)),
-url('images/NERVA-JakeandI.png');
-background-size:cover;
-background-position:center;
-border-radius:26px;
-padding:40px;
-border:1px solid rgba(255,255,255,0.08);
-min-height:260px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-gap:18px;
-"  >
-          <div style="font-size:0.85rem; letter-spacing:2px; color:#72c7ff; text-transform:uppercase;">
-  Featured By
-</div>
-
-<h3 style="font-size:2.3rem; line-height:1.05; margin:0;">
-  Lighthouse
-</h3>
-
-<p style="color:#d6d6d6; margin:0; max-width:520px; line-height:1.6;">
-  Macquarie University’s publication featuring research, innovation, and student engineering projects.
-</p>
-      </div>
+     </p>
+     <div class="article-tags">
+      <span class="tag">
+       Propulsion
+      </span>
+      <span class="tag">
+       Research
+      </span>
+      <span class="tag">
+       Macquarie University
+      </span>
+      <span class="tag">
+       Aerospace
+      </span>
+     </div>
+     <a class="btn primary" href="https://lighthouse.mq.edu.au/article/2026/may-2026/nerva-one-liquid-fuel-rockets" target="_blank">
+      Read Article
+     </a>
     </div>
+    <div class="article-image-card">
+     <div style="font-size:0.85rem; letter-spacing:2px; color:#72c7ff; text-transform:uppercase;">
+      Featured By
+     </div>
+     <h3 style="font-size:2.3rem; line-height:1.05; margin:0;">
+      Lighthouse
+     </h3>
+     <p style="color:#d6d6d6; margin:0; max-width:520px; line-height:1.6;">
+      Macquarie University&rsquo;s publication featuring research, innovation, and student engineering projects.
+     </p>
+    </div>
+   </div>
   </section>
-
   <section id="projects">
-    <h2 class="section-title">Engineering Projects</h2>
-    <p class="section-intro">
-      A visual overview of the engineering work I have developed across propulsion, CAD design, product development,
+   <h2 class="section-title">
+    Engineering Projects
+   </h2>
+   <p class="section-intro">
+    A visual overview of the engineering work developed across propulsion, CAD design, product development,
       manufacturing, and technical visualisation.
-    </p>
-
-    <div class="grid">
-        <article class="card project-card" onclick="openModal('nervaModal')">
-    <div class="project-image">
-  <img src="images/NERVA-ONE.png" alt="NERVA-ONE Render">
-</div>
-        <div class="project-content">
-          <h3>NERVA-ONE Rocket Engine</h3>
-          <p>
-            A 1 kN ethanol-70 / nitrous oxide liquid rocket engine developed as part of undergraduate honours research,
+   </p>
+   <div class="grid">
+    <article class="card project-card" onclick="openModal('nervaModal')">
+     <div class="project-image">
+      <img alt="NERVA-ONE render" src="images/NERVA-ONE.png"/>
+     </div>
+     <div class="project-content">
+      <h3>
+       NERVA-ONE Rocket Engine
+      </h3>
+      <p>
+       A 1 kN ethanol-70 / nitrous oxide liquid rocket engine developed as part of undergraduate honours research,
             featuring regenerative cooling, additive manufacturing constraints, and custom computational modelling.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Propulsion</span>
-            <span class="tag">Python</span>
-            <span class="tag">Thermal</span>
-            <span class="tag">SLM</span>
-          </div>
-            <div class="read-more-text">
-                Click to explore project →
-            </div>
-        </div>
-      </article>
-
-      <article class="card project-card">
-          <div class="project-image">
-  <img src="images/Monorail.png" alt="Monorail Render">
-</div>
-        <div class="project-content">
-          <h3>Blade Runner Monorail System</h3>
-          <p>
-            A scaled monorail transit concept involving mechanical design, electronics packaging, ultrasonic sensing,
-            PCB integration, and 3D-printable structural design.
-          </p>
-          <div class="project-tags">
-            <span class="tag">CAD</span>
-            <span class="tag">3D Printing</span>
-            <span class="tag">Electronics</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card project-card">
-          <div class="project-image">
-    <img src="images/Bridge.png" alt="Bridge">
-    </div>
-        <div class="project-content">
-          <h3>Mechanical Bridge Mechanism</h3>
-          <p>
-            <p>
-A mechanically actuated bridge concept focused on lightweight structural design, linkage-driven deployment systems, manufacturable geometry, and integrated mechanical assemblies developed through iterative CAD modelling and prototyping.
-</p>
-          </p>
-          <div class="project-tags">
-            <span class="tag">Product Design</span>
-            <span class="tag">Mechanisms</span>
-            <span class="tag">Sensors</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card project-card">
-      <div class="project-image">
-  <video autoplay muted loop playsinline>
-    <source src="images/Animation.mp4" type="video/mp4">
-  </video>
-</div>
-        <div class="project-content">
-          <h3>Technical Rendering & Visualisation</h3>
-          <p>
-              Blender rendering and animation workflow used to communicate engineering projects through
-            realistic materials, lighting, camera movement, and presentation-ready visuals.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Blender</span>
-            <span class="tag">Rendering</span>
-            <span class="tag">Animation</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card project-card">
-        <div class="project-image">
-  <img src="images/Gearbox1.png" alt="Mechanical Systems Design">
-</div>
-        <div class="project-content">
-          <h3>Modular 3-stage Planetary Gearbox</h3>
-          <p>
-            Design and fabrication of a modular, three-stage planetary gearbox as part of a competitive mechanical design project simulating lunar construction constraints.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Mechanisms</span>
-            <span class="tag">DFMA</span>
-            <span class="tag">FMEA</span>
-          </div>
-                        <div class="read-more-text">
-                Click to explore project →
-            </div>
-        </div>
-      </article>
-
-      <article class="card project-card">
-    <div class="project-image">
-    <img src="images/Manufacturing.png" alt="Manufacturing">
-    </div>
-        <div class="project-content">
-          <h3>Manufacturing & Prototyping</h3>
-          <p>
-            Practical work involving CAD preparation, manufacturing drawings, supplier communication, machining constraints,
+      </p>
+      <div class="project-tags">
+       <span class="tag">
+        Propulsion
+       </span>
+       <span class="tag">
+        Python
+       </span>
+       <span class="tag">
+        Thermal
+       </span>
+       <span class="tag">
+        SLM
+       </span>
+      </div>
+      <div class="read-more-text">
+       Click to explore project &rarr;
+      </div>
+     </div>
+    </article>
+    <article class="card project-card" onclick="openModal('gearboxModal')">
+     <div class="project-image">
+      <img alt="Planetary gearbox" src="images/Gearbox1.png"/>
+     </div>
+     <div class="project-content">
+      <h3>
+       Modular 3-Stage Planetary Gearbox
+      </h3>
+      <p>
+       Design and fabrication of a modular, three-stage planetary gearbox as part of a competitive mechanical design project
+            simulating lunar construction constraints.
+      </p>
+      <div class="project-tags">
+       <span class="tag">
+        Mechanisms
+       </span>
+       <span class="tag">
+        DFMA
+       </span>
+       <span class="tag">
+        FMEA
+       </span>
+      </div>
+      <div class="read-more-text">
+       Click to explore project &rarr;
+      </div>
+     </div>
+    </article>
+    <article class="card project-card" onclick="openModal('combustionModal')">
+     <div class="project-image">
+      <video autoplay="" loop="" muted="" playsinline="">
+       <source src="images/Combustion%20Chamber.mp4" type="video/mp4"/>
+      </video>
+     </div>
+     <div class="project-content">
+      <h3>
+       Transparent Combustion Chamber
+      </h3>
+      <p>
+       Oliver's beginning into propulsion; A transparent annular combustion chamber developed to investigate flame stability, airflow distribution,
+            and combustion characteristics within confined flow geometries.
+      </p>
+      <div class="project-tags">
+       <span class="tag">
+        Combustion
+       </span>
+       <span class="tag">
+        Fluid Flow
+       </span>
+       <span class="tag">
+        Testing
+       </span>
+       <span class="tag">
+        CAD
+       </span>
+      </div>
+     </div>
+    </article>
+    <article class="card project-card">
+     <div class="project-image">
+      <video autoplay="" loop="" muted="" playsinline="">
+       <source src="images/Animation.mp4" type="video/mp4"/>
+      </video>
+     </div>
+     <div class="project-content">
+      <h3>
+       Technical Rendering &amp; Visualisation
+      </h3>
+      <p>
+       Blender rendering and animation workflow used to communicate engineering projects through realistic materials,
+            lighting, camera movement, and presentation-ready visuals.
+      </p>
+      <div class="project-tags">
+       <span class="tag">
+        Blender
+       </span>
+       <span class="tag">
+        Rendering
+       </span>
+       <span class="tag">
+        Animation
+       </span>
+      </div>
+     </div>
+    </article>
+    <article class="card project-card" onclick="openModal('monorailModal')">
+     <div class="project-image">
+      <img alt="Monorail render" src="images/Monorail.png"/>
+     </div>
+     <div class="project-content">
+      <h3>
+       Collaborative University Engineering Projects
+      </h3>
+      <p>
+       Collaborative university engineering projects focused on the design, analysis, prototyping, and manufacturing of functional mechanical systems. These projects combined CAD development, mechanical design, and electronics integration, to deliver refined physical prototypes.
+      </p>
+      <div class="project-tags">
+       <span class="tag">
+        CAD
+       </span>
+       <span class="tag">
+        3D Printing
+       </span>
+       <span class="tag">
+        Electronics
+       </span>
+      </div>
+      <div class="read-more-text">
+       Click to explore project &rarr;
+      </div>
+     </div>
+    </article>
+    <article class="card project-card" onclick="openModal('manufacturingModal')">
+     <div class="project-image">
+      <img alt="Manufacturing work" src="images/Manufacturing.png"/>
+     </div>
+     <div class="project-content">
+      <h3>
+       Manufacturing &amp; Prototyping
+      </h3>
+      <p>
+       Practical work involving CAD preparation, manufacturing drawings, supplier communication, machining constraints,
             additive manufacturing limitations, and prototype iteration.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Manufacturing</span>
-            <span class="tag">Drawings</span>
-            <span class="tag">Prototyping</span>
-          </div>
-                        <div class="read-more-text">
-                Click to explore project →
-            </div>
-        </div>
-      </article>
-    </div>
+      </p>
+      <div class="project-tags">
+       <span class="tag">
+        Manufacturing
+       </span>
+       <span class="tag">
+        Drawings
+       </span>
+       <span class="tag">
+        Prototyping
+       </span>
+      </div>
+      <div class="read-more-text">
+       Click to explore project &rarr;
+      </div>
+     </div>
+    </article>
+   </div>
   </section>
-
   <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <p class="section-intro">
-      Technical capabilities developed through university coursework, independent projects, research, and practical design work.
-    </p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Engineering Analysis</h3>
-        <p>Thermal analysis, fluid dynamics, regenerative cooling, structural calculations, pressure drop modelling, and optimisation.</p>
-      </div>
-      <div class="card">
-        <h3>Design & CAD</h3>
-        <p>Onshape, Creo, Fusion 360, assembly design, technical drawings, design for additive manufacturing, and mechanisms.</p>
-      </div>
-      <div class="card">
-        <h3>Simulation & Coding</h3>
-        <p>Python, MATLAB, ANSYS Fluent/CFX, numerical modelling, data processing, and engineering automation.</p>
-      </div>
-      <div class="card">
-        <h3>Manufacturing</h3>
-        <p>SLM design constraints, CNC machining considerations, tolerancing, prototyping, supplier communication, and post-processing.</p>
-      </div>
-      <div class="card">
-        <h3>Visual Communication</h3>
-        <p>Blender rendering, animation, technical diagrams, presentation design, and turning complex systems into clear visuals.</p>
-      </div>
-      <div class="card">
-        <h3>Professional Skills</h3>
-        <p>Technical writing, outreach, teamwork, presenting to industry, project planning, and communicating across disciplines.</p>
-      </div>
+   <h2 class="section-title">
+    Skills
+   </h2>
+   <p class="section-intro">
+    Technical capabilities developed through university coursework, independent projects, research, and practical design work.
+   </p>
+   <div class="grid">
+    <div class="card">
+     <h3>
+      Engineering Analysis
+     </h3>
+     <p>
+      Thermal analysis, fluid dynamics, regenerative cooling, structural calculations, pressure drop modelling, and optimisation.
+     </p>
     </div>
+    <div class="card">
+     <h3>
+      Design &amp; CAD
+     </h3>
+     <p>
+      Onshape, Creo, Fusion 360, assembly design, technical drawings, design for additive manufacturing, and mechanisms.
+     </p>
+    </div>
+    <div class="card">
+     <h3>
+      Simulation &amp; Coding
+     </h3>
+     <p>
+      Python, MATLAB, ANSYS Fluent/CFX, numerical modelling, data processing, and engineering automation.
+     </p>
+    </div>
+    <div class="card">
+     <h3>
+      Manufacturing
+     </h3>
+     <p>
+      SLM design constraints, CNC machining considerations, tolerancing, prototyping, supplier communication, and post-processing.
+     </p>
+    </div>
+    <div class="card">
+     <h3>
+      Visual Communication
+     </h3>
+     <p>
+      Blender rendering, animation, technical diagrams, presentation design, and turning complex systems into clear visuals.
+     </p>
+    </div>
+    <div class="card">
+     <h3>
+      Professional Skills
+     </h3>
+     <p>
+      Technical writing, outreach, teamwork, presenting to industry, project planning, and communicating across disciplines.
+     </p>
+    </div>
+   </div>
   </section>
-
   <section id="experience">
-    <div class="split">
-      <div>
-        <h2 class="section-title">Experience & Highlights</h2>
-        <p class="section-intro">
-          A concise timeline of academic, technical, and professional development highlights.
-        </p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <span>2025–2026</span>
-          <h3>Mechanical Engineering Honours Research</h3>
-          <p>Developing NERVA-ONE, a student-led liquid bipropellant rocket engine project focused on propulsion design, regenerative cooling, and manufacturable hardware.</p>
-        </div>
-        <div class="timeline-item">
-          <span>2025</span>
-          <h3>International Aerospace Exposure</h3>
-          <p>Attended major aerospace events and engaged with industry discussions around propulsion, launch systems, and future space technologies.</p>
-        </div>
-        <div class="timeline-item">
-          <span>2024–2025</span>
-          <h3>Multidisciplinary Engineering Projects</h3>
-          <p>Completed projects involving mechanical design, electronics integration, CFD, product design, FMEA, DFMA, and prototype development.</p>
-        </div>
-        <div class="timeline-item">
-          <span>Ongoing</span>
-          <h3>Self-Taught Rendering & Technical Visualisation</h3>
-          <p>Developed Blender-based rendering skills to create professional engineering visuals, animations, and presentation material.</p>
-        </div>
-      </div>
+   <div class="split">
+    <div>
+     <h2 class="section-title">
+      Experience &amp; Highlights
+     </h2>
+     <p class="section-intro">
+      A concise timeline of academic, technical, and professional development highlights.
+     </p>
     </div>
+    <div class="timeline">
+     <div class="timeline-item">
+      <span>
+       2025&ndash;2026
+      </span>
+      <h3>
+       Mechanical Engineering Honours Research
+      </h3>
+      <p>
+       Developing NERVA-ONE, a student-led liquid bipropellant rocket engine project focused on propulsion design, regenerative cooling, and manufacturable hardware.
+      </p>
+     </div>
+     <div class="timeline-item">
+      <span>
+       2025
+      </span>
+      <h3>
+       International Aerospace Exposure
+      </h3>
+      <p>
+       Attended major aerospace events and engaged with industry discussions around propulsion, launch systems, and future space technologies.
+      </p>
+     </div>
+     <div class="timeline-item">
+      <span>
+       2024&ndash;2025
+      </span>
+      <h3>
+       Multidisciplinary Engineering Projects
+      </h3>
+      <p>
+       Completed projects involving mechanical design, electronics integration, CFD, product design, FMEA, DFMA, and prototype development.
+      </p>
+     </div>
+     <div class="timeline-item">
+      <span>
+       Ongoing
+      </span>
+      <h3>
+       Rendering &amp; Technical Visualisation
+      </h3>
+      <p>
+       Developed Blender-based rendering skills to create professional engineering visuals, animations, and presentation material.
+      </p>
+     </div>
+    </div>
+   </div>
   </section>
-
-  <section id="contact" class="contact">
-    <h2 class="section-title">Contact</h2>
-    <p>
-      I am always interested in opportunities related to propulsion, aerospace engineering, mechanical design,
+  <section class="contact" id="contact">
+   <h2 class="section-title">
+    Contact
+   </h2>
+   <p>
+    I am always interested in opportunities related to propulsion, aerospace engineering, mechanical design,
       manufacturing, and advanced engineering systems.
-    </p>
-    <div class="buttons" style="justify-content: center;">
-      <a class="btn primary" href="mailto:onichol21@gmail.com">Email Me</a>
-      <a class="btn" href="https://www.linkedin.com/in/oliver-bnicholson" target="_blank">LinkedIn</a>
-    </div>
+   </p>
+   <div class="buttons" style="justify-content: center;">
+    <a class="btn primary" href="mailto:onichol21@gmail.com">
+     Email Me
+    </a>
+    <a class="btn" href="https://www.linkedin.com/in/oliver-bnicholson" target="_blank">
+     LinkedIn
+    </a>
+   </div>
   </section>
-
   <footer>
-    © 2026 Oliver Nicholson. Built for GitHub Pages.
+   &copy; 2026 Oliver Nicholson. Built for GitHub Pages.
   </footer>
-
-<div id="nervaModal" class="modal">
-  <div class="modal-content nerva-modal">
-    <span class="close" onclick="closeModal('nervaModal')">&times;</span>
-
-    <div class="modal-hero">
-
-      <div class="modal-hero-top">
-        <p class="modal-eyebrow">
-          Undergraduate Honours Research • Propulsion Development
-        </p>
-
-        <h2>NERVA-ONE Rocket Engine</h2>
+  <!-- NERVA POPUP -->
+  <div class="modal" id="nervaModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('nervaModal')">
+     &times;
+    </span>
+    <div class="modal-scroll">
+     <div class="modal-header">
+      <p class="modal-eyebrow">
+       Undergraduate Honours Research &bull; Propulsion Development
+      </p>
+      <h2>
+       NERVA-ONE Rocket Engine
+      </h2>
+     </div>
+     <div class="modal-hero-grid">
+      <div>
+       <p class="modal-lead">
+        NERVA-ONE is a 1 kN regeneratively cooled ethanol-70 / nitrous oxide liquid bipropellant rocket engine developed by Oliver Nicholson and Jake Mackenzie Wood under the supervision of A/Prof Fatemeh Salehi, as part of undergraduate honours research at Macquarie University. The project brings together propulsion analysis, thermal-fluid modelling, structural design, additive manufacturing constraints, and practical engine integration into a single manufacturable propulsion system.
+       </p>
+       <p class="modal-lead">
+        The engine was developed not only as a theoretical design exercise, but as a physical research platform for future validation testing. A major focus of the work was understanding how the coupled nature of cooling channel geometry, pressure drop, wall temperature, material strength, and manufacturing limitations can be managed through a custom computational optimisation workflow.
+       </p>
       </div>
-
-      <div class="modal-hero-bottom">
-        <div>
-          <p>
-            NERVA-ONE is a 1 kilonewton regeneratively cooled ethanol-70 / nitrous oxide liquid rocket engine developed as part of undergraduate honours research at Macquarie University.
-            The project focuses on the integration of thermal-fluid analysis, regenerative cooling optimisation, additive manufacturing constraints, and propulsion systems engineering into a single manufacturable engine architecture.
-          </p>
-
-          <p>
-            A major focus of the project was the development of a custom one-dimensional optimisation framework capable of generating continuously varying regenerative cooling channel geometry and variable hot-side wall thickness based on local thermal and structural loading conditions.
-          </p>
-              <p>
-    Rather than acting as a purely theoretical design study, NERVA-ONE was developed around physical manufacturability and future validation testing. The engine is intended to demonstrate how advanced design tools and additive manufacturing can make small-scale liquid propulsion research more accessible within a university environment.
-  </p>
+      <img alt="NERVA-ONE rocket engine render" class="modal-hero-image" src="images/Hero-render.png"/>
+     </div>
+     <div class="modal-section">
+      <h3>
+       Key Parameters
+      </h3>
+      <p class="section-intro-modal">
+       A technical snapshot of the operating point, propellant combination, cooling strategy, and major design features used to define the engine architecture.
+      </p>
+      <div class="modern-param-table">
+       <div class="param-col">
+        <div class="param-row">
+         <span>
+          1000
+          <small>
+           N
+          </small>
+         </span>
+         <p>
+          Targeted Design Thrust
+         </p>
         </div>
-
-        <img src="images/Hero-render.png" alt="NERVA-ONE Render">
+        <div class="param-row">
+         <span>
+          C₂H₅OH
+         </span>
+         <p>
+          Fuel &mdash; Ethanol-70
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          N₂O
+         </span>
+         <p>
+          Oxidiser &mdash; Nitrous Oxide
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          5.17
+          <small>
+           MPa
+          </small>
+         </span>
+         <p>
+          Propellant Feed Pressure
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          0.28
+          <small>
+           MPa
+          </small>
+         </span>
+         <p>
+          Coolant Pressure Budget
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          3.45
+          <small>
+           MPa
+          </small>
+         </span>
+         <p>
+          Chamber Pressure
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          225
+          <small>
+           sec
+          </small>
+         </span>
+         <p>
+          Specific Impulse
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          3.85
+          <small>
+           O/F
+          </small>
+         </span>
+         <p>
+          O/F Mass Ratio
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          24.7
+          <small>
+           psia
+          </small>
+         </span>
+         <p>
+          Exit Pressure
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          2.36
+          <small>
+           Mach
+          </small>
+         </span>
+         <p>
+          Effective Exhaust Velocity
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          1415
+          <small>
+           m/s
+          </small>
+         </span>
+         <p>
+          Characteristic Exhaust Velocity
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          7.05
+         </span>
+         <p>
+          Expansion Ratio
+         </p>
+        </div>
+       </div>
+       <div class="param-divider">
+       </div>
+       <div class="param-col">
+        <div class="param-row">
+         <span>
+          Triplet
+         </span>
+         <p>
+          Unlike Impinging Injector
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          4.44
+          <small>
+           MPa
+          </small>
+         </span>
+         <p>
+          Injection Pressure
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          3
+          <small>
+           mm
+          </small>
+         </span>
+         <p>
+          Impingement Distance
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          20
+          <small>
+           %
+          </small>
+         </span>
+         <p>
+          Injector Pressure Drop
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          0.39
+          <small>
+           kg/s
+          </small>
+         </span>
+         <p>
+          Nitrous Mass Flow
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          1
+          <small>
+           mm
+          </small>
+         </span>
+         <p>
+          20 &middot; Nitrous Ports at 30&deg;
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          0.068
+          <small>
+           kg/s
+          </small>
+         </span>
+         <p>
+          Ethanol Mass Flow Rate
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          0.6
+          <small>
+           mm
+          </small>
+         </span>
+         <p>
+          10 &middot; Ethanol Orifices
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          5
+          <small>
+           %
+          </small>
+         </span>
+         <p>
+          Film-cooling Flow Allocation
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          0.4
+          <small>
+           mm
+          </small>
+         </span>
+         <p>
+          10 &middot; Film Cooling Orifices
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          1.7
+          <small>
+           mm
+          </small>
+         </span>
+         <p>
+          Gasket Thickness
+         </p>
+        </div>
+        <div class="param-row">
+         <span>
+          Brass
+         </span>
+         <p>
+          Material Selection
+         </p>
+        </div>
+       </div>
       </div>
-
+     </div>
+     <div class="modal-section">
+      <h3>
+       Thrust Chamber
+      </h3>
+      <div class="thrust-layout">
+       <div>
+        <p>
+         A major focus of the research is the optimisation of regenerative cooling channel geometry throughout the thrust chamber. Initial thermal estimates are obtained using a Bartz based approximation, followed by a coolant driven search method to determine suitable channel geometries along the chamber length.
+        </p>
+        <p>
+         To support this process, a one-dimensional computational model has been developed which can generate regenerative cooling channel geometries parametrically while accounting for both the geometric constraints of the engine and the manufacturing limitations of Selective Laser Melting (SLM).
+        </p>
+       </div>
+       <img alt="Regenerative cooling chamber render" class="thrust-image" src="images/Bi-Channel.png"/>
+      </div>
+      <div class="full-width-text">
+       <p>
+        Rather than relying on manually designed cooling layouts, this tool allows rapid exploration of a much broader range of channel configurations and geometric strategies. This enables the investigation of cooling geometries that are often overlooked in student-scale propulsion projects due to design complexity and iteration time.
+       </p>
+       <p>
+        By integrating computational optimisation with additive manufacturing constraints, the project aims to push the design space of small regeneratively cooled engines further than is typically achievable through conventional design approaches.
+       </p>
+      </div>
+     </div>
+     <div class="modal-section">
+      <h3>
+       Computational Workflow
+      </h3>
+      <p class="section-intro-modal">
+       Simplified workflow of the custom one-dimensional optimisation model used to iteratively solve regenerative cooling geometry, pressure drop, thermal loading, and structural constraints along the engine.
+      </p>
+      <div class="workflow-card">
+       <img alt="NERVA-ONE computational workflow diagram" class="workflow-image" src="images/Code-Workflow.png"/>
+      </div>
+     </div>
+     <div class="modal-section injector-section">
+      <div class="injector-layout">
+       <div class="injector-text">
+        <h3>
+         Injector and Manifold
+        </h3>
+        <p>
+         The injector system uses a triplet unlike-impinging injector configuration, designed to balance resultant momentum and promote efficient atomisation prior to combustion. The injector incorporates 20 nitrous oxide injection ports at 1 mm diameter, 10 ethanol injection ports at 0.6 mm diameter, and 10 film-cooling ports at 0.4 mm diameter.
+        </p>
+        <p>
+         Film cooling accounts for approximately 5% of the total system mass flow rate and provides the primary thermal protection along the chamber wall, significantly reducing local heat flux within the combustion chamber.
+        </p>
+        <p>
+         The manifold and thrust chamber are additively manufactured in AlSi10Mg using Selective Laser Melting, while the injector itself is machined from brass to achieve the required tolerances for the small injection orifices. Sealing between the injector and combustion chamber is achieved using a graphite-reinforced steel gasket to accommodate the dissimilar materials and operating pressures within the assembly.
+        </p>
+       </div>
+       <div class="injector-image-card">
+        <img alt="Injector and manifold assembly render" class="injector-image" src="images/Injector-design.png"/>
+       </div>
+      </div>
+     </div>
+     <div class="modal-section">
+      <h3>
+       Future Work
+      </h3>
+      <p class="section-intro-modal">
+       Further development will focus on expanding both the propulsion platform and the parametric design tools established throughout this research.
+      </p>
+      <div class="future-grid">
+       <div class="feature-card">
+        <h4>
+         Green Propellant Alternatives
+        </h4>
+        <p>
+         Investigate self-pressurising fuel alternatives to replace ethanol, reducing feed system complexity while improving mass, cost, and integration efficiency.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h4>
+         User-Facing Cooling Tool
+        </h4>
+        <p>
+         Develop an interface for the cooling optimisation code so key engine parameters can be modified without directly editing the underlying Python codebase.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h4>
+         Parametric Chamber Generation
+        </h4>
+        <p>
+         Expand automated thrust chamber generation with selectable cooling strategies, helix angles, pressure drop limits, thermal constraints, and manufacturing rules.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h4>
+         Bifurcated Channel Study
+        </h4>
+        <p>
+         Compare bifurcated and non-bifurcated cooling channel geometries to evaluate thermal performance, pressure drop, and manufacturability trade-offs.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h4>
+         Monolithic SLM Architecture
+        </h4>
+        <p>
+         Transition toward a single-part SLM-manufactured engine architecture to reduce assembly complexity and enable more advanced internal cooling geometries.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h4>
+         Student Research Platform
+        </h4>
+        <p>
+         Expand NERVA-ONE into a multidisciplinary framework for future student thesis work across propulsion, thermal analysis, manufacturing, and systems engineering.
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="modal-section">
+      <h3>
+       Gallery
+      </h3>
+      <p class="section-intro-modal">
+       Additional renders, prototype images, section views, and testing visuals.
+      </p>
+      <div class="gallery">
+       <img alt="NERVA-ONE render" src="images/NERVA-ONE.png"/>
+      </div>
+     </div>
     </div>
-
-    <div class="modal-section">
-</div>
-      <div class="modal-section">
-  <h3>Injector, Manifold & Cooling System</h3>
-
-  <p>
-    The injector uses a triplet unlike-impinging configuration to promote atomisation of ethanol and nitrous oxide prior to combustion. Small orifice sizes required the injector to be treated as a precision manufacturing challenge as much as a propulsion design problem.
-  </p>
-
-  <p>
-    The manifold and thrust chamber were developed around additive manufacturing constraints, enabling complex internal flow routing and cooling features that would be difficult or impractical to manufacture using conventional machining.
-  </p>
-
-  <p>
-    Thermal management is achieved through a combination of regenerative cooling and film cooling. Regenerative channels remove heat through the chamber wall, while film cooling reduces local wall heat flux near the combustion region.
-  </p>
-          <div class="modal-gallery">
-  <img src="images/Injector-design.png" alt="Injector">
-  <img src="images/NERVA-Render.png" alt="Section Engine">
-              </div>
-</div>
-<div class="modal-section">
-  <h3>Key Design Parameters</h3>
-
-  <div class="nerva-param-table">
-
-    <div class="param-col">
-      <div class="param-row"><span>1000 <small>N</small></span><p>Targeted Design Thrust</p></div>
-      <div class="param-row"><span>C₂H₅OH</span><p>Fuel — Ethanol-70</p></div>
-      <div class="param-row"><span>N₂O</span><p>Oxidiser — Nitrous Oxide</p></div>
-      <div class="param-row"><span>5.17 <small>MPa</small></span><p>Propellant Feed Pressure</p></div>
-      <div class="param-row"><span>0.28 <small>MPa</small></span><p>Coolant Pressure Budget</p></div>
-      <div class="param-row"><span>3.45 <small>MPa</small></span><p>Chamber Pressure</p></div>
-      <div class="param-row"><span>225 <small>s</small></span><p>Specific Impulse</p></div>
-      <div class="param-row"><span>3.85</span><p>O/F Mass Ratio</p></div>
-      <div class="param-row"><span>24.7 <small>psia</small></span><p>Exit Pressure</p></div>
-      <div class="param-row"><span>2.36 <small>Mach</small></span><p>Exit Mach Number</p></div>
-      <div class="param-row"><span>1415 <small>m/s</small></span><p>Characteristic Exhaust Velocity</p></div>
-      <div class="param-row"><span>7.05</span><p>Nozzle Expansion Ratio</p></div>
-    </div>
-
-    <div class="param-divider"></div>
-
-    <div class="param-col">
-      <div class="param-row"><span>Triplet</span><p>Unlike Impinging Injector</p></div>
-      <div class="param-row"><span>4.44 <small>MPa</small></span><p>Injection Pressure</p></div>
-      <div class="param-row"><span>3 <small>mm</small></span><p>Impingement Distance</p></div>
-      <div class="param-row"><span>20 <small>%</small></span><p>Injector Pressure Drop</p></div>
-      <div class="param-row"><span>0.39 <small>kg/s</small></span><p>Nitrous Mass Flow</p></div>
-      <div class="param-row"><span>1 <small>mm</small></span><p>20 Nitrous Ports at 30°</p></div>
-      <div class="param-row"><span>0.068 <small>kg/s</small></span><p>Ethanol Mass Flow Rate</p></div>
-      <div class="param-row"><span>0.6 <small>mm</small></span><p>10 Ethanol Orifices</p></div>
-      <div class="param-row"><span>5 <small>%</small></span><p>Film Cooling Allocation</p></div>
-      <div class="param-row"><span>0.4 <small>mm</small></span><p>10 Film Cooling Orifices</p></div>
-      <div class="param-row"><span>1.7 <small>mm</small></span><p>Gasket Thickness</p></div>
-      <div class="param-row"><span>Brass</span><p>Injector Material Selection</p></div>
-    </div>
-
+   </div>
   </div>
-</div>
-
-<div class="modal-section">
-  <h3>Novelty & Design Approach</h3>
-
-  <div class="modal-feature-grid">
-    <div class="modal-feature">
-      <h4>Variable Wall Thickness</h4>
-      <p>
-        The thrust chamber uses variable hot-side wall thickness along its length, allowing the structure to respond to local pressure, thermal loading, and material limitations instead of relying on a constant wall assumption.
+  <!-- MODULAR GEARBOX POPUP -->
+  <div class="modal" id="gearboxModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('gearboxModal')">
+     &times;
+    </span>
+    <div class="modal-scroll">
+     <div class="modal-header">
+      <p class="modal-eyebrow">
+       Mechanical Design &bull; DFMA &bull; Mechanisms
       </p>
-    </div>
-
-    <div class="modal-feature">
-      <h4>Optimised Regen Channels</h4>
-      <p>
-        Regenerative cooling channel geometry is generated through a custom optimisation workflow, allowing local channel dimensions and flow behaviour to be adjusted along the chamber and nozzle.
+      <h2>
+       Modular 3-Stage Planetary Gearbox
+      </h2>
+     </div>
+     <div class="modal-hero-grid">
+      <div>
+       <p class="modal-lead">
+        A modular three-stage planetary gearbox developed as part of a competitive mechanical design project. The system was designed to lift a prescribed load within a target time while balancing torque transmission, manufacturability, assembly simplicity, and prototype reliability.
+       </p>
+       <p class="modal-lead">
+        The gearbox achieved a total reduction ratio of 47:1 through a compact three-stage planetary arrangement designed to operate within strict geometric and material constraints while delivering the required output torque for lifting a 25 kg load (~110 Nm). A major focus of the project was balancing mechanical performance with practical fabrication methods. The final assembly incorporated both CNC-machined and additively manufactured components, alongside detailed shaft, bearing, and gear train analysis to ensure reliable operation under high loading conditions.
+       </p>
+      </div>
+      <img alt="Modular planetary gearbox render" class="modal-hero-image" src="images/Gearbox5.png"/>
+     </div>
+     <div class="modal-section project-popup-gallery">
+      <h3>
+       Gallery
+      </h3>
+      <p class="section-intro-modal">
+       Additional renders and prototype views from the gearbox design process.
       </p>
+      <div class="gearbox-gallery">
+       <div class="gearbox-gallery-item">
+        <img alt="Machined gearbox components" src="images/Gearbox3.png"/>
+       </div>
+       <div class="gearbox-gallery-item">
+        <img alt="Gearbox CAD render" src="images/Gearbox4.png"/>
+       </div>
+       <div class="gearbox-gallery-item">
+        <img alt="Assembled gearbox prototype" src="images/Gearbox6.png"/>
+       </div>
+       <div class="gearbox-gallery-wide">
+        <img alt="Exploded gearbox assembly" src="images/Gearbox7.png"/>
+       </div>
+      </div>
+     </div>
     </div>
-
-    <div class="modal-feature">
-      <h4>Low-Part Engine Architecture</h4>
-      <p>
-        The engine is designed around three primary components: thrust chamber, manifold, and injector. This reduces assembly complexity and supports a clearer validation pathway.
-      </p>
-    </div>
+   </div>
   </div>
-</div>
-
-
-
-<div class="modal-gallery">
-  <img src="images/NERVA-ONE.png" alt="Injector placeholder">
-  <img src="images/NERVA-ONE.png" alt="Cooling channel placeholder">
-  <img src="images/NERVA-ONE.png" alt="Manifold placeholder">
-  <img src="images/NERVA-ONE.png" alt="Chamber placeholder">
-</div>
-
-<div class="modal-section">
-  <h3>Computational Optimisation Workflow</h3>
-
-  <p>
-    A custom Python-based optimisation workflow was developed to support the regenerative cooling design. The tool discretises the thrust chamber along its axial length and evaluates local thermal, pressure, and structural requirements to guide the cooling channel geometry.
-  </p>
-
-  <p>
-    This approach allows channel height, width, helix angle, wall thickness, pressure drop, and coolant temperature rise to be considered together. The result is a more integrated design process where thermal performance, structural reliability, and manufacturability are solved as a coupled problem.
-  </p>
-</div>
-
-<div class="modal-section">
-  <h3>Future Development</h3>
-
-  <div class="future-grid">
-    <div class="future-card">
-      <h4>Static Hot-Fire Validation</h4>
-      <p>
-        The next major milestone is experimental validation through static hot-fire testing to compare measured engine behaviour against theoretical and computational predictions.
+  <!-- BLADE RUNNER POPUP -->
+  <div class="modal" id="monorailModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('monorailModal')">
+     &times;
+    </span>
+    <div class="modal-scroll">
+     <div class="modal-header">
+      <p class="modal-eyebrow">
+       CAD &bull; Electronics Packaging &bull; 3D Printing
       </p>
-    </div>
-
-    <div class="future-card">
-      <h4>Expanded Optimisation Tool</h4>
-      <p>
-        Further development will focus on a user-facing version of the cooling tool, allowing future users to modify engine parameters without directly editing the codebase.
+      <h2>
+       Collaborative University Engineering Projects
+      </h2>
+     </div>
+     <div class="modal-section project-combo-section">
+      <div class="project-combo-layout">
+       <div class="project-combo-text">
+        <h3>
+         Blade Runner Monorail Transit
+        </h3>
+        <p>
+         A collaborative university engineering project focused on the design and prototyping of a scaled monorail transit system. The project combined CAD modelling, electronics packaging, ultrasonic sensing, PCB integration, and additive manufacturing to produce a compact functional prototype.
+        </p>
+        <p>
+         The design was developed with a focus on modular assembly, internal component packaging, wiring access, and practical 3D-printing constraints.
+        </p>
+       </div>
+       <img alt="Blade Runner monorail render" class="project-combo-image" src="images/Monorail.png"/>
+      </div>
+      <h3 class="project-gallery-title">
+       Gallery
+      </h3>
+      <p class="project-gallery-subtitle">
+       Additional renders and development visuals from the project process.
       </p>
-    </div>
-
-    <div class="future-card">
-      <h4>Advanced Cooling Geometries</h4>
-      <p>
-        Future work will compare bifurcated and non-bifurcated cooling channel strategies to better understand pressure drop, manufacturability, and thermal performance trade-offs.
+      <div class="project-combo-gallery">
+       <img alt="Monorail image" src="images/Train1.png"/>
+       <img alt="Monorail image" src="images/Train2.png"/>
+       <img alt="Monorail image" src="images/Train3.png"/>
+       <img alt="Monorail image" src="images/Train4.png"/>
+       <img alt="Monorail image" src="images/Train5.png"/>
+       <img alt="Monorail image" src="images/Train6.png"/>
+       <img alt="Monorail image" src="images/Train7.png"/>
+      </div>
+     </div>
+     <div class="modal-section project-combo-section">
+      <div class="project-combo-layout">
+       <div class="project-combo-text">
+        <h3>
+         Structural Bridge Mechanism
+        </h3>
+        <p>
+         A collaborative university engineering project centred on the design, analysis, and fabrication of a lightweight structural bridge prototype. The work combined CAD modelling, structural optimisation, manufacturing planning, and physical testing.
+        </p>
+        <p>
+         The project focused on developing a manufacturable bridge structure capable of balancing strength, stiffness, weight, assembly practicality, and real-world testing performance.
+        </p>
+       </div>
+       <img alt="Structural bridge mechanism render" class="project-combo-image" src="images/Bridge4.png"/>
+      </div>
+      <h3 class="project-gallery-title">
+       Gallery
+      </h3>
+      <p class="project-gallery-subtitle">
+       Additional renders and development visuals from the project process.
       </p>
+      <div class="project-combo-gallery">
+       <img alt="Bridge image" src="images/Bridge1.png"/>
+       <img alt="Bridge image" src="images/Bridge2.png"/>
+       <img alt="Bridge image" src="images/Bridge3.png"/>
+      </div>
+     </div>
     </div>
-
-    <div class="future-card">
-      <h4>Monolithic SLM Architecture</h4>
-      <p>
-        Long-term development aims to move toward more integrated, single-part SLM-manufactured engine architectures with reduced assembly complexity.
-      </p>
-    </div>
+   </div>
   </div>
-</div>
+  <!-- MANUFACTURING POPUP -->
+  <div class="modal" id="manufacturingModal">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('manufacturingModal')">
+     &times;
+    </span>
+    <div class="modal-scroll">
+     <div class="modal-header">
+      <p class="modal-eyebrow">
+       Manufacturing &bull; Supplier Communication &bull; Prototyping
+      </p>
+      <h2>
+       Manufacturing &amp; Prototyping
+      </h2>
+     </div>
+     <div class="modal-hero-grid">
+      <div>
+       <p class="modal-lead">
+        Practical manufacturing and prototyping experience spanning CAD preparation, technical drawing generation, machining feasibility, additive manufacturing optimisation, and iterative prototype refinement. Oliver&rsquo;s work focuses on bridging the gap between digital design and real-world production by incorporating manufacturing constraints directly into the engineering process. This includes consideration of tolerances, surface finish requirements, post-processing workflows, assembly accessibility, material selection, and the practical limitations of both conventional and additive manufacturing methods. Through continuous design iteration and hands-on fabrication experience, he has developed a strong understanding of designing components not only for performance, but also for manufacturability, reliability, and efficient assembly.
+       </p>
+      </div>
+      <img alt="Manufacturing and prototyping work" class="modal-hero-image" src="images/Manufacturing%201.png"/>
+     </div>
+     <div class="modal-section">
+      <h3>
+       Capabilities Demonstrated
+      </h3>
+      <div class="feature-grid">
+       <div class="feature-card">
+        <h4>
+         Technical Drawings
+        </h4>
+        <p>
+         Preparation of drawings, feature callouts, dimensions, and manufacturing notes for supplier review.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h4>
+         Design for Manufacture
+        </h4>
+        <p>
+         Consideration of machining constraints, additive manufacturing limitations, assembly access, post-processing requirements, and material selection throughout the design process.
+        </p>
+       </div>
+       <div class="feature-card">
+        <h4>
+         Prototype Iteration
+        </h4>
+        <p>
+         Using fabrication feedback to refine CAD geometry, assembly strategy, and manufacturing feasibility.
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="modal-section project-popup-gallery">
+      <h3>
+       Gallery
+      </h3>
+      <p class="section-intro-modal">
+       Additional manufacturing, prototyping, and project development visuals.
+      </p>
+      <div class="gallery">
+       <img alt="Manufacturing drawing" src="images/Manufacturing2.png"/>
+       <img alt="Machined injector prototype" class="manufacturing-closeup" src="images/Manufacturing3.png"/>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   function openModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.add("active");
+      document.body.classList.add("modal-open");
+    }
 
-<script>
-  function openModal(id) {
-    document.getElementById(id).classList.add("active");
-    document.body.classList.add("modal-open");
-  }
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.remove("active");
+      document.body.classList.remove("modal-open");
+    }
 
-  function closeModal(id) {
-    document.getElementById(id).classList.remove("active");
-    document.body.classList.remove("modal-open");
-  }
-</script>
-</body>
+    window.addEventListener("click", function(event) {
+      if (event.target.classList.contains("modal")) {
+        event.target.classList.remove("active");
+        document.body.classList.remove("modal-open");
+      }
+    });
+
+    window.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        document.querySelectorAll(".modal.active").forEach((modal) => {
+          modal.classList.remove("active");
+        });
+        document.body.classList.remove("modal-open");
+      }
+    });
+  </script>
+ </body>
 </html>
