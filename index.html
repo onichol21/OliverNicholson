@@ -1793,6 +1793,9 @@ The gearbox achieved a total reduction ratio of 47:1 through a compact three-sta
         <img src="images/Bridge3.png" alt="Bridge image">
 </div>
 </div>
+              </div>
+  </div>
+</div>
 
   <!-- MANUFACTURING POPUP -->
 
@@ -1903,7 +1906,7 @@ Practical manufacturing and prototyping experience spanning CAD preparation, tec
         - No fade-in.
         - Fades out quickly, leaving a clean dark section before grass appears.
       */
-      const lunarFadeStart = heroEnd + viewportHeight * 0.00;
+      const lunarFadeStart = heroEnd + viewportHeight * 0.10;
       const lunarFadeDistance = viewportHeight * 2;
       const lunarOpacity = 1 - clamp((scrollY - lunarFadeStart) / lunarFadeDistance, 0, 1);
 
@@ -1924,6 +1927,7 @@ Practical manufacturing and prototyping experience spanning CAD preparation, tec
     window.addEventListener('resize', updatePageBackground);
     window.addEventListener('load', updatePageBackground);
     updatePageBackground();
+
   </script>
 </body>
 </html>
